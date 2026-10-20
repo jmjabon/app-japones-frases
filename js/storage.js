@@ -1,17 +1,25 @@
 const DB_KEYS = {
     WEIGHTS: 'nihongo_weights_v2',
-    FLAGS: 'nihongo_flags_v2'
+    FLAGS: 'nihongo_flags_v2',
+    CUSTOM_VOCAB: 'nihongo_custom_vocab_v2' // Guardará las ediciones hechas desde el iPad
 };
 
 export const StorageManager = {
     vocabData: [],
     weights: JSON.parse(localStorage.getItem(DB_KEYS.WEIGHTS)) || {},
     flags: JSON.parse(localStorage.getItem(DB_KEYS.FLAGS)) || [],
+    customVocab: JSON.parse(localStorage.getItem(DB_KEYS.CUSTOM_VOCAB)) || {},
 
     async loadVocab() {
         try {
             const response = await fetch('./data/vocab.json');
-            this.vocabData = await response.json();
+            const baseVocab = await response.json();
+            
+            // Fusionar el JSON estático con las ediciones locales hechas en la app
+            this.vocabData = baseVocab.map(item => {
+                return this.customVocab[item.id] ? { ...item, ...this.customVocab[item.id] } : item;
+            });
+            
             this.initWeights();
             return this.vocabData;
         } catch (error) {
@@ -59,6 +67,18 @@ export const StorageManager = {
         return this.flags.includes(id);
     },
 
+    updatePhrase(id, newData) {
+        // Guardar en el diccionario local persistente
+        this.customVocab[id] = { ...this.customVocab[id], ...newData };
+        localStorage.setItem(DB_KEYS.CUSTOM_VOCAB, JSON.stringify(this.customVocab));
+        
+        // Actualizar la memoria activa
+        const index = this.vocabData.findIndex(i => i.id === id);
+        if(index > -1) {
+            this.vocabData[index] = { ...this.vocabData[index], ...newData };
+        }
+    },
+
     getIslands() {
         const islands = new Set();
         this.vocabData.forEach(item => islands.add(item.isla));
@@ -66,11 +86,9 @@ export const StorageManager = {
     },
 
     generateSession(activeIslands, size) {
-        // Filtrar vocabulario por islas activas
         const pool = this.vocabData.filter(item => activeIslands.includes(item.isla));
         if (pool.length === 0) return [];
 
-        // Muestreo ponderado basado en pesos (algoritmo Leitner simplificado)
         const weightedPool = [];
         pool.forEach(item => {
             const weight = this.weights[item.id]?.peso || 1;
@@ -79,7 +97,6 @@ export const StorageManager = {
             }
         });
 
-        // Seleccionar aleatoriamente respetando los pesos
         const session = new Set();
         while(session.size < size && session.size < pool.length) {
             const randomItem = weightedPool[Math.floor(Math.random() * weightedPool.length)];
