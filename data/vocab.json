@@ -1,0 +1,34 @@
+[
+  {
+    "id": "inm_01",
+    "isla": "Inmigración",
+    "es": "¿Dónde está inmigración?",
+    "ja": "入国審査はどこですか",
+    "romaji": "Nyūkoku shinsa wa doko desu ka",
+    "furigana": "<ruby>入国<rt>にゅうこく</rt></ruby><ruby>審査<rt>しんさ</rt></ruby>はどこですか"
+  },
+  {
+    "id": "inm_02",
+    "isla": "Inmigración",
+    "es": "Vengo de España.",
+    "ja": "スペインから来ました",
+    "romaji": "Supein kara kimashita",
+    "furigana": "スペインから<ruby>来<rt>き</rt></ruby>ました"
+  },
+  {
+    "id": "trans_01",
+    "isla": "Del aeropuerto a la ciudad",
+    "es": "¿Dónde está la estación de tren?",
+    "ja": "電車の駅はどこですか",
+    "romaji": "Densha no eki wa doko desu ka",
+    "furigana": "<ruby>電車<rt>でんしゃ</rt></ruby>の<ruby>駅<rt>えき</rt></ruby>はどこですか"
+  },
+  {
+    "id": "trans_02",
+    "isla": "Del aeropuerto a la ciudad",
+    "es": "Quiero ir a Tokio.",
+    "ja": "東京に行きたいです",
+    "romaji": "Tōkyō ni ikitai desu",
+    "furigana": "<ruby>東京<rt>とうきょう</rt></ruby>に<ruby>行<rt>い</rt></ruby>きたいです"
+  }
+]

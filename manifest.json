@@ -1,0 +1,15 @@
+{
+  "name": "Nihongo Flow",
+  "short_name": "Nihongo",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/512px-Flag_of_Japan.svg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
