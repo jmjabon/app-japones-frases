@@ -1,0 +1,107 @@
+[
+  {
+    "id": "rp_01",
+    "escenario": "Tienda de Conveniencia (Konbini)",
+    "contexto": "El cajero pasa tus compras por el lector y te pregunta:",
+    "hablante": "Cajero",
+    "audio_prompt": "袋はご利用ですか？",
+    "prompt_romaji": "Fukuro wa go-riyō desu ka?",
+    "prompt_es": "¿Desea bolsa de plástico?",
+    "opciones": [
+      {
+        "id": "opt_1",
+        "ja": "大丈夫です、持っています。",
+        "romaji": "Daijōbu desu, motte imasu.",
+        "es": "No hace falta, llevo la mía.",
+        "correcta": true,
+        "feedback": "¡Natural y educado! Muy común si llevas tu propia bolsa."
+      },
+      {
+        "id": "opt_2",
+        "ja": "はい、一枚お願いします。",
+        "romaji": "Hai, ichimai onegai shimasu.",
+        "es": "Sí, una por favor.",
+        "correcta": true,
+        "feedback": "¡Perfecto! Te cobrarán unos 3-5 yenes por la bolsa."
+      },
+      {
+        "id": "opt_3",
+        "ja": "東京に行きたいです。",
+        "romaji": "Tōkyō ni ikitai desu.",
+        "es": "Quiero ir a Tokio.",
+        "correcta": false,
+        "feedback": "Desconectado de la situación. Te están preguntando por la bolsa de la compra."
+      }
+    ]
+  },
+  {
+    "id": "rp_02",
+    "escenario": "Control de Inmigración (Aeropuerto)",
+    "contexto": "El oficial de aduanas examina tu pasaporte y pregunta con seriedad:",
+    "hablante": "Oficial",
+    "audio_prompt": "入国の目的は何ですか？",
+    "prompt_romaji": "Nyūkoku no mokuteki wa nan desu ka?",
+    "prompt_es": "¿Cuál es el motivo de su visita?",
+    "opciones": [
+      {
+        "id": "opt_1",
+        "ja": "観光です。",
+        "romaji": "Kankō desu.",
+        "es": "Turismo / Vacaciones.",
+        "correcta": true,
+        "feedback": "Respuesta directa, breve y precisa. Lo que esperan oír."
+      },
+      {
+        "id": "opt_2",
+        "ja": "チェックインは何時ですか？",
+        "romaji": "Chekkuin wa nanji desu ka?",
+        "es": "¿A qué hora es el check-in?",
+        "correcta": false,
+        "feedback": "Eso se pregunta en el hotel, no al oficial de control migratorio."
+      },
+      {
+        "id": "opt_3",
+        "ja": "切符はどこで買えますか？",
+        "romaji": "Kippu wa doko de kaemasu ka?",
+        "es": "¿Dónde puedo comprar el billete?",
+        "correcta": false,
+        "feedback": "Confuso. Te han preguntado el propósito de tu entrada al país."
+      }
+    ]
+  },
+  {
+    "id": "rp_03",
+    "escenario": "Recepción del Hotel",
+    "contexto": "Llegas al mostrador a las 11:00 AM con las maletas:",
+    "hablante": "Recepcionista",
+    "audio_prompt": "いらっしゃいませ。ご予約のお名前をお願いします。",
+    "prompt_romaji": "Irasshaimase. Goyoyaku no onamae o onegai shimasu.",
+    "prompt_es": "Bienvenido. ¿Me indica el nombre de su reserva, por favor?",
+    "opciones": [
+      {
+        "id": "opt_1",
+        "ja": "予約しています。カルロスの名前です。",
+        "romaji": "Yoyaku shite imasu. Karurosu no namae desu.",
+        "es": "Tengo reserva a nombre de Carlos.",
+        "correcta": true,
+        "feedback": "¡Impecable! Conecta reserva y nombre con claridad."
+      },
+      {
+        "id": "opt_2",
+        "ja": "いいえ、ありません。",
+        "romaji": "Iie, arimasen.",
+        "es": "No, no hay / no tengo.",
+        "correcta": false,
+        "feedback": "Si dices esto, entenderán que no tienes ninguna reserva."
+      },
+      {
+        "id": "opt_3",
+        "ja": "出口はどこですか？",
+        "romaji": "Deguchi wa doko desu ka?",
+        "es": "¿Dónde está la salida?",
+        "correcta": false,
+        "feedback": "¡Acabas de entrar al hotel! Primero identifícate con tu nombre."
+      }
+    ]
+  }
+]

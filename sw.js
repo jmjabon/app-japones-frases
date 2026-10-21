@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nihongo-cache-v3';
+const CACHE_NAME = 'nihongo-cache-v4';
 const ASSETS = [
     './index.html',
     './manifest.json',
@@ -8,7 +8,11 @@ const ASSETS = [
     './js/audio.js',
     './js/modes/scramble.js',
     './js/modes/cloze.js',
-    './data/vocab.json'
+    './js/modes/slot.js',
+    './js/modes/roleplay.js',
+    './data/vocab.json',
+    './data/templates.json',
+    './data/roleplay.json'
 ];
 
 // Instalación: Cacheo tolerante a fallos individuales

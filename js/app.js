@@ -2,6 +2,8 @@ import { StorageManager } from './storage.js';
 import { AudioPlayer } from './audio.js';
 import { ScrambleMode } from './modes/scramble.js';
 import { ClozeMode } from './modes/cloze.js';
+import { SlotMode } from './modes/slot.js';
+import { RoleplayMode } from './modes/roleplay.js';
 
 const State = {
     isFuriganaActive: true,
@@ -81,18 +83,24 @@ function renderMainMenu() {
                     </select>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3 mb-3">
-                    <button id="btn-start-guided" class="bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
-                        <i data-lucide="book-open"></i> Guiado
+                <div class="grid grid-cols-2 gap-2.5 mb-3">
+                    <button id="btn-start-guided" class="bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
+                        <i data-lucide="book-open" class="w-4 h-4"></i> Guiado
                     </button>
-                    <button id="btn-start-cards" class="bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
-                        <i data-lucide="layers"></i> Tarjetas
+                    <button id="btn-start-cards" class="bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
+                        <i data-lucide="layers" class="w-4 h-4"></i> Tarjetas
                     </button>
-                    <button id="btn-start-scramble" class="bg-sky-500 hover:bg-sky-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
-                        <i data-lucide="puzzle"></i> Ordenar
+                    <button id="btn-start-scramble" class="bg-sky-500 hover:bg-sky-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
+                        <i data-lucide="puzzle" class="w-4 h-4"></i> Ordenar
                     </button>
-                    <button id="btn-start-cloze" class="bg-fuchsia-500 hover:bg-fuchsia-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
-                        <i data-lucide="target"></i> Partículas
+                    <button id="btn-start-cloze" class="bg-fuchsia-500 hover:bg-fuchsia-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
+                        <i data-lucide="target" class="w-4 h-4"></i> Partículas
+                    </button>
+                    <button id="btn-start-slot" class="bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Sustitución
+                    </button>
+                    <button id="btn-start-roleplay" class="bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
+                        <i data-lucide="messages-square" class="w-4 h-4"></i> Diálogos
                     </button>
                 </div>
                 <button id="btn-open-manager" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
@@ -155,6 +163,22 @@ function renderMainMenu() {
                 onComplete: renderMainMenu
             });
         } else alert('Selecciona al menos una isla con frases.');
+    });
+
+    document.getElementById('btn-start-slot').addEventListener('click', () => {
+        SlotMode.start({
+            container: DOM.container,
+            audio: AudioPlayer,
+            onComplete: renderMainMenu
+        });
+    });
+
+    document.getElementById('btn-start-roleplay').addEventListener('click', () => {
+        RoleplayMode.start({
+            container: DOM.container,
+            audio: AudioPlayer,
+            onComplete: renderMainMenu
+        });
     });
 }
 
