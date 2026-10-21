@@ -12,7 +12,8 @@ const State = {
     activeIslands: [],
     sessionQueue: [],
     blindEs: false, // Persiana Ocultar Español
-    blindJa: false  // Persiana Ocultar Japonés
+    blindJa: false,  // Persiana Ocultar Japonés
+    sessionInitialSize: 0
 };
 
 const DOM = {
@@ -138,6 +139,7 @@ function renderMainMenu() {
     document.getElementById('btn-start-cards').addEventListener('click', () => {
         const size = parseInt(document.getElementById('session-size').value);
         State.sessionQueue = StorageManager.generateSession(State.activeIslands, size);
+        State.sessionInitialSize = State.sessionQueue.length;
         if (State.sessionQueue.length > 0) renderCardMode();
         else alert('Selecciona al menos una isla con frases.');
     });
@@ -148,13 +150,14 @@ function renderMainMenu() {
     document.getElementById('btn-start-scramble').addEventListener('click', () => {
         const size = parseInt(document.getElementById('session-size').value);
         State.sessionQueue = StorageManager.generateSession(State.activeIslands, size);
+        State.sessionInitialSize = State.sessionQueue.length;
         if (State.sessionQueue.length > 0) {
             ScrambleMode.start({
                 queue: State.sessionQueue,
                 storage: StorageManager,
                 audio: AudioPlayer,
                 container: DOM.container,
-                onComplete: renderMainMenu
+                onComplete: renderSessionSummary
             });
         } else alert('Selecciona al menos una isla con frases.');
     });
@@ -162,13 +165,14 @@ function renderMainMenu() {
     document.getElementById('btn-start-cloze').addEventListener('click', () => {
         const size = parseInt(document.getElementById('session-size').value);
         State.sessionQueue = StorageManager.generateSession(State.activeIslands, size);
+        State.sessionInitialSize = State.sessionQueue.length;
         if (State.sessionQueue.length > 0) {
             ClozeMode.start({
                 queue: State.sessionQueue,
                 storage: StorageManager,
                 audio: AudioPlayer,
                 container: DOM.container,
-                onComplete: renderMainMenu
+                onComplete: renderSessionSummary
             });
         } else alert('Selecciona al menos una isla con frases.');
     });
@@ -192,13 +196,14 @@ function renderMainMenu() {
     document.getElementById('btn-start-dictation').addEventListener('click', () => {
         const size = parseInt(document.getElementById('session-size').value);
         State.sessionQueue = StorageManager.generateSession(State.activeIslands, size);
+        State.sessionInitialSize = State.sessionQueue.length;
         if (State.sessionQueue.length > 0) {
             DictationMode.start({
                 queue: State.sessionQueue,
                 storage: StorageManager,
                 audio: AudioPlayer,
                 container: DOM.container,
-                onComplete: renderMainMenu
+                onComplete: renderSessionSummary
             });
         } else alert('Selecciona al menos una isla con frases.');
     });
@@ -206,7 +211,7 @@ function renderMainMenu() {
     document.getElementById('btn-weakness').addEventListener('click', () => {
         const size = parseInt(document.getElementById('session-size').value);
         State.sessionQueue = StorageManager.generateWeaknessSession(size);
-        
+        State.sessionInitialSize = State.sessionQueue.length;
         if (State.sessionQueue.length > 0) {
             // Lanzamos el modo Tarjetas Interactivas porque es el más eficiente 
             // para consolidar memoria cuando hay una debilidad detectada.
@@ -425,7 +430,7 @@ function renderCardMode() {
     // Lo dejo oculto para no alargar la respuesta, pero no ha sufrido cambios].
     
     if (State.sessionQueue.length === 0) {
-        renderMainMenu();
+        renderSessionSummary();
         return;
     }
 
@@ -520,6 +525,64 @@ function renderCardMode() {
 
     document.getElementById('btn-wrong').addEventListener('click', (e) => { e.stopPropagation(); handleFeedback(false); });
     document.getElementById('btn-correct').addEventListener('click', (e) => { e.stopPropagation(); handleFeedback(true); });
+}
+
+// ====== MÓDULO DE REPORTE POST-SESIÓN ======
+function renderSessionSummary() {
+    const failedItems = StorageManager.getSessionErrors();
+    const total = State.sessionInitialSize || 0;
+    const flawless = Math.max(0, total - failedItems.length);
+
+    DOM.container.innerHTML = `
+        <div class="fade-in max-w-md mx-auto flex flex-col items-center justify-center h-[85vh] text-center px-4">
+            <div class="w-24 h-24 bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center mb-6 shadow-sm border border-indigo-100">
+                <i data-lucide="${failedItems.length === 0 ? 'trophy' : 'activity'}" class="w-12 h-12"></i>
+            </div>
+            
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">¡Sesión Completada!</h2>
+            <p class="text-slate-500 mb-8 font-medium">Has entrenado ${total} frases en esta ronda.</p>
+
+            <div class="grid grid-cols-2 gap-4 w-full mb-10">
+                <div class="bg-emerald-50 border border-emerald-100 p-5 rounded-3xl shadow-sm">
+                    <div class="text-4xl font-bold text-emerald-600 mb-2">${flawless}</div>
+                    <div class="text-[10px] font-bold text-emerald-800 uppercase tracking-widest">A la primera</div>
+                </div>
+                <div class="bg-rose-50 border border-rose-100 p-5 rounded-3xl shadow-sm">
+                    <div class="text-4xl font-bold text-rose-600 mb-2">${failedItems.length}</div>
+                    <div class="text-[10px] font-bold text-rose-800 uppercase tracking-widest">Fallos</div>
+                </div>
+            </div>
+
+            <div class="w-full space-y-3 mt-auto">
+                ${failedItems.length > 0 ? `
+                    <button id="btn-retry-failed" class="w-full py-4 bg-rose-500 hover:bg-rose-600 text-white rounded-2xl font-bold shadow-md active:scale-95 transition-all flex justify-center items-center gap-2">
+                        <i data-lucide="refresh-cw" class="w-5 h-5"></i> Re-entrenar fallos ahora
+                    </button>
+                ` : `
+                    <div class="p-4 text-sm text-emerald-700 bg-emerald-100 rounded-2xl mb-4 font-bold border border-emerald-200">
+                        ¡Memoria fotográfica! 🧠 Cero fallos.
+                    </div>
+                `}
+                <button id="btn-back-menu" class="w-full py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl font-bold active:scale-95 transition-all">
+                    Volver al Menú
+                </button>
+            </div>
+        </div>
+    `;
+    lucide.createIcons();
+
+    document.getElementById('btn-back-menu').addEventListener('click', renderMainMenu);
+
+    const btnRetry = document.getElementById('btn-retry-failed');
+    if (btnRetry) {
+        btnRetry.addEventListener('click', () => {
+            // Iniciar sesión de re-pesca solo con los fallos
+            State.sessionQueue = [...failedItems];
+            State.sessionInitialSize = State.sessionQueue.length;
+            StorageManager.sessionErrors.clear(); // Limpiamos para el nuevo intento
+            renderCardMode(); // Usamos tarjetas para el repaso rápido y directo
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

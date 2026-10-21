@@ -10,6 +10,8 @@ export const StorageManager = {
     flags: JSON.parse(localStorage.getItem(DB_KEYS.FLAGS)) || [],
     customVocab: JSON.parse(localStorage.getItem(DB_KEYS.CUSTOM_VOCAB)) || {},
 
+    sessionErrors: new Set(),
+
     async loadVocab() {
         try {
             const response = await fetch('./data/vocab.json');
@@ -46,6 +48,9 @@ export const StorageManager = {
 
     updateWeight(id, isCorrect) {
         if (!this.weights[id]) return;
+
+        if (!isCorrect) this.sessionErrors.add(id);
+
         if (isCorrect) {
             this.weights[id].peso = Math.max(1, this.weights[id].peso - 1);
             this.weights[id].aciertos++;
@@ -86,6 +91,7 @@ export const StorageManager = {
     },
 
     generateSession(activeIslands, size) {
+        this.sessionErrors.clear();
         const pool = this.vocabData.filter(item => activeIslands.includes(item.isla));
         if (pool.length === 0) return [];
 
@@ -104,8 +110,9 @@ export const StorageManager = {
         }
         return Array.from(session);
     },
-    
+
     generateWeaknessSession(size) {
+        this.sessionErrors.clear();
         // Filtrar solo las frases que el usuario ha fallado (peso > 1 o con registro de fallos)
         const weakItems = this.vocabData.filter(item => {
             const stats = this.weights[item.id];
