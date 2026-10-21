@@ -1,5 +1,9 @@
 import { StorageManager } from './storage.js';
 import { AudioPlayer } from './audio.js';
+import { StorageManager } from './storage.js';
+import { AudioPlayer } from './audio.js';
+import { ScrambleMode } from './modes/scramble.js';
+import { ClozeMode } from './modes/cloze.js';
 
 const State = {
     isFuriganaActive: true,
@@ -86,6 +90,12 @@ function renderMainMenu() {
                     <button id="btn-start-cards" class="bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
                         <i data-lucide="layers"></i> Tarjetas
                     </button>
+                    <button id="btn-start-scramble" class="bg-sky-500 hover:bg-sky-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
+                        <i data-lucide="puzzle"></i> Ordenar
+                    </button>
+                    <button id="btn-start-cloze" class="bg-fuchsia-500 hover:bg-fuchsia-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
+                        <i data-lucide="target"></i> Partículas
+                    </button>
                 </div>
                 <button id="btn-open-manager" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
                     <i data-lucide="database"></i> Gestor de Frases
@@ -120,6 +130,34 @@ function renderMainMenu() {
 
     document.getElementById('btn-start-guided').addEventListener('click', renderGuidedStudy);
     document.getElementById('btn-open-manager').addEventListener('click', renderPhraseManager);
+
+    document.getElementById('btn-start-scramble').addEventListener('click', () => {
+        const size = parseInt(document.getElementById('session-size').value);
+        State.sessionQueue = StorageManager.generateSession(State.activeIslands, size);
+        if (State.sessionQueue.length > 0) {
+            ScrambleMode.start({
+                queue: State.sessionQueue,
+                storage: StorageManager,
+                audio: AudioPlayer,
+                container: DOM.container,
+                onComplete: renderMainMenu
+            });
+        } else alert('Selecciona al menos una isla con frases.');
+    });
+
+    document.getElementById('btn-start-cloze').addEventListener('click', () => {
+        const size = parseInt(document.getElementById('session-size').value);
+        State.sessionQueue = StorageManager.generateSession(State.activeIslands, size);
+        if (State.sessionQueue.length > 0) {
+            ClozeMode.start({
+                queue: State.sessionQueue,
+                storage: StorageManager,
+                audio: AudioPlayer,
+                container: DOM.container,
+                onComplete: renderMainMenu
+            });
+        } else alert('Selecciona al menos una isla con frases.');
+    });
 }
 
 // ====== MÓDULO 1: ESTUDIO GUIADO ======
