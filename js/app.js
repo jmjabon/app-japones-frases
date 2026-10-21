@@ -1,7 +1,5 @@
 import { StorageManager } from './storage.js';
 import { AudioPlayer } from './audio.js';
-import { StorageManager } from './storage.js';
-import { AudioPlayer } from './audio.js';
 import { ScrambleMode } from './modes/scramble.js';
 import { ClozeMode } from './modes/cloze.js';
 
