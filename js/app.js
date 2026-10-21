@@ -110,9 +110,6 @@ function renderMainMenu() {
                 <button id="btn-open-manager" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
                     <i data-lucide="database"></i> Gestor de Frases
                 </button>
-                <button id="btn-open-manager" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
-                    <i data-lucide="database"></i> Gestor de Frases
-                </button>
             </div>
         </div>
     `;

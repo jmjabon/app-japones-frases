@@ -1,34 +1,51 @@
 [
-  {
-    "id": "inm_01",
-    "isla": "Inmigración",
-    "es": "¿Dónde está inmigración?",
-    "ja": "入国審査はどこですか",
-    "romaji": "Nyūkoku shinsa wa doko desu ka",
-    "furigana": "<ruby>入国<rt>にゅうこく</rt></ruby><ruby>審査<rt>しんさ</rt></ruby>はどこですか"
-  },
-  {
-    "id": "inm_02",
-    "isla": "Inmigración",
-    "es": "Vengo de España.",
-    "ja": "スペインから来ました",
-    "romaji": "Supein kara kimashita",
-    "furigana": "スペインから<ruby>来<rt>き</rt></ruby>ました"
-  },
-  {
-    "id": "trans_01",
-    "isla": "Del aeropuerto a la ciudad",
-    "es": "¿Dónde está la estación de tren?",
-    "ja": "電車の駅はどこですか",
-    "romaji": "Densha no eki wa doko desu ka",
-    "furigana": "<ruby>電車<rt>でんしゃ</rt></ruby>の<ruby>駅<rt>えき</rt></ruby>はどこですか"
-  },
-  {
-    "id": "trans_02",
-    "isla": "Del aeropuerto a la ciudad",
-    "es": "Quiero ir a Tokio.",
-    "ja": "東京に行きたいです",
-    "romaji": "Tōkyō ni ikitai desu",
-    "furigana": "<ruby>東京<rt>とうきょう</rt></ruby>に<ruby>行<rt>い</rt></ruby>きたいです"
-  }
+  { "id": "soc_01", "isla": "Lubricante Social", "es": "Disculpe / Perdón.", "ja": "すみません", "romaji": "sumimasen", "furigana": "すみません" },
+  { "id": "soc_02", "isla": "Lubricante Social", "es": "Muchas gracias.", "ja": "ありがとうございます", "romaji": "arigatou gozaimasu", "furigana": "ありがとうございます" },
+  { "id": "soc_03", "isla": "Lubricante Social", "es": "No entiendo.", "ja": "分かりません", "romaji": "wakarimasen", "furigana": "<ruby>分<rt>わ</rt></ruby>かりません" },
+  { "id": "soc_04", "isla": "Lubricante Social", "es": "¿Habla inglés?", "ja": "英語を話せますか", "romaji": "eigo o hanasemasu ka", "furigana": "<ruby>英語<rt>えいご</rt></ruby>を<ruby>話<rt>はな</rt></ruby>せますか" },
+  { "id": "soc_05", "isla": "Lubricante Social", "es": "Una vez más, por favor.", "ja": "もう一度お願いします", "romaji": "mou ichido onegaishimasu", "furigana": "もう<ruby>一度<rt>いちど</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします" },
+  { "id": "soc_06", "isla": "Lubricante Social", "es": "Más despacio, por favor.", "ja": "ゆっくりお願いします", "romaji": "yukkuri onegaishimasu", "furigana": "ゆっくりお<ruby>願<rt>ねが</rt></ruby>いします" },
+  { "id": "soc_07", "isla": "Lubricante Social", "es": "Así es / Ya veo.", "ja": "そうですね", "romaji": "sou desu ne", "furigana": "そうですね" },
+  { "id": "soc_08", "isla": "Lubricante Social", "es": "Es un poco... (Rechazo amable)", "ja": "ちょっと...", "romaji": "chotto...", "furigana": "ちょっと..." },
+  { "id": "soc_09", "isla": "Lubricante Social", "es": "Estoy bien / No hace falta.", "ja": "大丈夫です", "romaji": "daijoubu desu", "furigana": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です" },
+  { "id": "soc_10", "isla": "Lubricante Social", "es": "Soy de España.", "ja": "スペインから来ました", "romaji": "supein kara kimashita", "furigana": "スペインから<ruby>来<rt>き</rt></ruby>ました" },
+
+  { "id": "trn_01", "isla": "Tránsito y Navegación", "es": "¿Dónde está la estación?", "ja": "駅はどこですか", "romaji": "eki wa doko desu ka", "furigana": "<ruby>駅<rt>えき</rt></ruby>はどこですか" },
+  { "id": "trn_02", "isla": "Tránsito y Navegación", "es": "Quiero ir a Tokio.", "ja": "東京に行きたいです", "romaji": "toukyou ni ikitai desu", "furigana": "<ruby>東京<rt>とうきょう</rt></ruby>に<ruby>行<rt>い</rt></ruby>きたいです" },
+  { "id": "trn_03", "isla": "Tránsito y Navegación", "es": "¿Este tren va a Shinjuku?", "ja": "この電車は新宿に行きますか", "romaji": "kono densha wa shinjuku ni ikimasu ka", "furigana": "この<ruby>電車<rt>でんしゃ</rt></ruby>は<ruby>新宿<rt>しんじゅく</rt></ruby>に<ruby>行<rt>い</rt></ruby>きますか" },
+  { "id": "trn_04", "isla": "Tránsito y Navegación", "es": "¿Cuál es la próxima estación?", "ja": "次はどこですか", "romaji": "tsugi wa doko desu ka", "furigana": "<ruby>次<rt>つぎ</rt></ruby>はどこですか" },
+  { "id": "trn_05", "isla": "Tránsito y Navegación", "es": "¿Dónde compro el billete?", "ja": "切符はどこで買えますか", "romaji": "kippu wa doko de kaemasu ka", "furigana": "<ruby>切符<rt>きっぷ</rt></ruby>はどこで<ruby>買<rt>か</rt></ruby>えますか" },
+  { "id": "trn_06", "isla": "Tránsito y Navegación", "es": "¿Tengo que hacer transbordo?", "ja": "乗り換えですか", "romaji": "norikae desu ka", "furigana": "<ruby>乗<rt>の</rt></ruby>り<ruby>換<rt>か</rt></ruby>えですか" },
+  { "id": "trn_07", "isla": "Tránsito y Navegación", "es": "¿Puedo usar la tarjeta Suica?", "ja": "スイカは使えますか", "romaji": "suika wa tsukaemasu ka", "furigana": "スイカは<ruby>使<rt>つか</rt></ruby>えますか" },
+  { "id": "trn_08", "isla": "Tránsito y Navegación", "es": "Quiero recargar esto.", "ja": "これをチャージしたいです", "romaji": "kore o chaaji shitai desu", "furigana": "これをチャージしたいです" },
+
+  { "id": "kon_01", "isla": "Tiendas y Konbini", "es": "No necesito bolsa.", "ja": "袋は要りません", "romaji": "fukuro wa irimasen", "furigana": "<ruby>袋<rt>ふくろ</rt></ruby>は<ruby>要<rt>い</rt></ruby>りません" },
+  { "id": "kon_02", "isla": "Tiendas y Konbini", "es": "Con tarjeta, por favor.", "ja": "カードでお願いします", "romaji": "kaado de onegaishimasu", "furigana": "カードでお<ruby>願<rt>ねが</rt></ruby>いします" },
+  { "id": "kon_03", "isla": "Tiendas y Konbini", "es": "Caliente esto, por favor.", "ja": "温めてください", "romaji": "atatamete kudasai", "furigana": "<ruby>温<rt>あたた</rt></ruby>めてください" },
+  { "id": "kon_04", "isla": "Tiendas y Konbini", "es": "Deme esto, por favor.", "ja": "これをください", "romaji": "kore o kudasai", "furigana": "これをください" },
+  { "id": "kon_05", "isla": "Tiendas y Konbini", "es": "¿Cuánto cuesta esto?", "ja": "これはいくらですか", "romaji": "kore wa ikura desu ka", "furigana": "これはいくらですか" },
+  { "id": "kon_06", "isla": "Tiendas y Konbini", "es": "Solo estoy mirando.", "ja": "見ているだけです", "romaji": "mite iru dake desu", "furigana": "<ruby>見<rt>み</rt></ruby>ているだけです" },
+
+  { "id": "izk_01", "isla": "Restaurante e Izakaya", "es": "Dos personas, por favor.", "ja": "二人です", "romaji": "futari desu", "furigana": "<ruby>二人<rt>ふたり</rt></ruby>です" },
+  { "id": "izk_02", "isla": "Restaurante e Izakaya", "es": "Una persona, por favor.", "ja": "一人です", "romaji": "hitori desu", "furigana": "<ruby>一人<rt>ひとり</rt></ruby>です" },
+  { "id": "izk_03", "isla": "Restaurante e Izakaya", "es": "¿Tienen menú en inglés?", "ja": "英語のメニューはありますか", "romaji": "eigo no menyuu wa arimasu ka", "furigana": "<ruby>英語<rt>えいご</rt></ruby>のメニューはありますか" },
+  { "id": "izk_04", "isla": "Restaurante e Izakaya", "es": "¿Qué me recomienda?", "ja": "おすすめは何ですか", "romaji": "osusume wa nan desu ka", "furigana": "おすすめは<ruby>何<rt>なん</rt></ruby>ですか" },
+  { "id": "izk_05", "isla": "Restaurante e Izakaya", "es": "Agua, por favor.", "ja": "お水をお願いします", "romaji": "omizu o onegaishimasu", "furigana": "お<ruby>水<rt>みず</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします" },
+  { "id": "izk_06", "isla": "Restaurante e Izakaya", "es": "Cerveza de barril, por favor.", "ja": "生ビールをください", "romaji": "nama biiru o kudasai", "furigana": "<ruby>生<rt>なま</rt></ruby>ビールをください" },
+  { "id": "izk_07", "isla": "Restaurante e Izakaya", "es": "La cuenta, por favor.", "ja": "お会計をお願いします", "romaji": "okaikei o onegaishimasu", "furigana": "お<ruby>会計<rt>かいけい</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします" },
+  { "id": "izk_08", "isla": "Restaurante e Izakaya", "es": "Estaba delicioso (al salir).", "ja": "ごちそうさまでした", "romaji": "gochisousama deshita", "furigana": "ごちそうさまでした" },
+
+  { "id": "hot_01", "isla": "Hotel (Base de Operaciones)", "es": "Tengo una reserva.", "ja": "予約しています", "romaji": "yoyaku shite imasu", "furigana": "<ruby>予約<rt>よやく</rt></ruby>しています" },
+  { "id": "hot_02", "isla": "Hotel (Base de Operaciones)", "es": "Quiero hacer el check-in.", "ja": "チェックインをお願いします", "romaji": "chekku in o onegaishimasu", "furigana": "チェックインをお<ruby>願<rt>ねが</rt></ruby>いします" },
+  { "id": "hot_03", "isla": "Hotel (Base de Operaciones)", "es": "¿Puedo dejar mi equipaje?", "ja": "荷物を預けてもいいですか", "romaji": "nimotsu o azukete mo ii desu ka", "furigana": "<ruby>荷物<rt>にもつ</rt></ruby>を<ruby>預<rt>あず</rt></ruby>けてもいいですか" },
+  { "id": "hot_04", "isla": "Hotel (Base de Operaciones)", "es": "¿A qué hora es el desayuno?", "ja": "朝ごはんは何時ですか", "romaji": "asa-gohan wa nanji desu ka", "furigana": "<ruby>朝<rt>あさ</rt></ruby>ごはんは<ruby>何時<rt>なんじ</rt></ruby>ですか" },
+  { "id": "hot_05", "isla": "Hotel (Base de Operaciones)", "es": "¿Cuál es la contraseña del Wi-Fi?", "ja": "Wi-Fiのパスワードは何ですか", "romaji": "waifai no pasuwaado wa nan desu ka", "furigana": "Wi-Fiのパスワードは<ruby>何<rt>なん</rt></ruby>ですか" },
+  { "id": "hot_06", "isla": "Hotel (Base de Operaciones)", "es": "¿Dónde está mi habitación?", "ja": "私の部屋はどこですか", "romaji": "watashi no heya wa doko desu ka", "furigana": "<ruby>私<rt>わたし</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>はどこですか" },
+
+  { "id": "emg_01", "isla": "Crisis y Emergencias", "es": "¿Dónde está el baño?", "ja": "トイレはどこですか", "romaji": "toire wa doko desu ka", "furigana": "トイレはどこですか" },
+  { "id": "emg_02", "isla": "Crisis y Emergencias", "es": "Ayúdeme, por favor.", "ja": "手伝ってください", "romaji": "tetsudatte kudasai", "furigana": "<ruby>手伝<rt>てつだ</rt></ruby>ってください" },
+  { "id": "emg_03", "isla": "Crisis y Emergencias", "es": "He perdido mi pasaporte.", "ja": "パスポートをなくしました", "romaji": "pasupooto o nakushimashita", "furigana": "パスポートをなくしました" },
+  { "id": "emg_04", "isla": "Crisis y Emergencias", "es": "Tengo alergia a esto.", "ja": "これのアレルギーがあります", "romaji": "kore no arerugii ga arimasu", "furigana": "これのアレルギーがあります" },
+  { "id": "emg_05", "isla": "Crisis y Emergencias", "es": "Me siento mal (enfermo).", "ja": "気分が悪いです", "romaji": "kibun ga warui desu", "furigana": "<ruby>気分<rt>きぶん</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いです" },
+  { "id": "emg_06", "isla": "Crisis y Emergencias", "es": "Quiero ir al hospital.", "ja": "病院に行きたいです", "romaji": "byouin ni ikitai desu", "furigana": "<ruby>病院<rt>びょういん</rt></ruby>に<ruby>行<rt>い</rt></ruby>きたいです" }
 ]

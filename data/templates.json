@@ -1,54 +1,55 @@
 [
   {
     "id": "tpl_01",
-    "isla": "Direcciones y Transporte",
+    "isla": "Tránsito y Navegación",
     "es_pattern": "¿Dónde está {slot}?",
     "ja_pattern": "{slot}はどこですか",
     "romaji_pattern": "{slot} wa doko desu ka",
     "slots": [
-      { "es": "la estación de tren", "ja": "駅", "romaji": "eki", "furigana": "<ruby>駅<rt>えき</rt></ruby>" },
       { "es": "el baño", "ja": "トイレ", "romaji": "toire", "furigana": "トイレ" },
-      { "es": "el hotel", "ja": "ホテル", "romaji": "hoteru", "furigana": "ホテル" },
+      { "es": "la estación de tren", "ja": "駅", "romaji": "eki", "furigana": "<ruby>駅<rt>えき</rt></ruby>" },
       { "es": "la salida", "ja": "出口", "romaji": "deguchi", "furigana": "<ruby>出口<rt>でぐち</rt></ruby>" },
-      { "es": "inmigración", "ja": "入国審査", "romaji": "nyūkoku shinsa", "furigana": "<ruby>入国<rt>にゅうこく</rt></ruby><ruby>審査<rt>しんさ</rt></ruby>" }
+      { "es": "el cajero automático", "ja": "ATM", "romaji": "eetiiemu", "furigana": "ATM" },
+      { "es": "la taquilla de billetes", "ja": "切符売り場", "romaji": "kippu uriba", "furigana": "<ruby>切符<rt>きっぷ</rt></ruby><ruby>売<rt>う</rt></ruby>り<ruby>場<rt>ば</rt></ruby>" }
     ]
   },
   {
     "id": "tpl_02",
-    "isla": "Deseos y Peticiones",
+    "isla": "Tránsito y Navegación",
     "es_pattern": "Quiero ir a {slot}.",
     "ja_pattern": "{slot}に行きたいです",
     "romaji_pattern": "{slot} ni ikitai desu",
     "slots": [
-      { "es": "Tokio", "ja": "東京", "romaji": "Tōkyō", "furigana": "<ruby>東京<rt>とうきょう</rt></ruby>" },
-      { "es": "Kioto", "ja": "京都", "romaji": "Kyōto", "furigana": "<ruby>京都<rt>きょうと</rt></ruby>" },
-      { "es": "este hotel", "ja": "このホテル", "romaji": "kono hoteru", "furigana": "このホテル" },
-      { "es": "la estación", "ja": "駅", "romaji": "eki", "furigana": "<ruby>駅<rt>えき</rt></ruby>" }
+      { "es": "Tokio", "ja": "東京", "romaji": "toukyou", "furigana": "<ruby>東京<rt>とうきょう</rt></ruby>" },
+      { "es": "Akihabara", "ja": "秋葉原", "romaji": "akihabara", "furigana": "<ruby>秋葉原<rt>あきはばら</rt></ruby>" },
+      { "es": "el aeropuerto", "ja": "空港", "romaji": "kuukou", "furigana": "<ruby>空港<rt>くうこう</rt></ruby>" },
+      { "es": "el hotel", "ja": "ホテル", "romaji": "hoteru", "furigana": "ホテル" }
     ]
   },
   {
     "id": "tpl_03",
-    "isla": "Compras y Restaurante",
+    "isla": "Restaurante e Izakaya",
     "es_pattern": "Por favor, deme {slot}.",
-    "ja_pattern": "{slot}をください",
-    "romaji_pattern": "{slot} o kudasai",
+    "ja_pattern": "{slot}をお願いします",
+    "romaji_pattern": "{slot} o onegaishimasu",
     "slots": [
-      { "es": "un billete", "ja": "切符", "romaji": "kippu", "furigana": "<ruby>切符<rt>きっぷ</rt></ruby>" },
       { "es": "agua", "ja": "お水", "romaji": "omizu", "furigana": "お<ruby>水<rt>みず</rt></ruby>" },
       { "es": "la cuenta", "ja": "お会計", "romaji": "okaikei", "furigana": "お<ruby>会計<rt>かいけい</rt></ruby>" },
-      { "es": "un menú en inglés", "ja": "英語のメニュー", "romaji": "eigo no menyū", "furigana": "<ruby>英語<rt>えいご</rt></ruby>のメニュー" }
+      { "es": "un menú en inglés", "ja": "英語のメニュー", "romaji": "eigo no menyuu", "furigana": "<ruby>英語<rt>えいご</rt></ruby>のメニュー" },
+      { "es": "platos pequeños", "ja": "取り皿", "romaji": "torizara", "furigana": "<ruby>取<rt>と</rt></ruby>り<ruby>皿<rt>ざら</rt></ruby>" }
     ]
   },
   {
     "id": "tpl_04",
-    "isla": "Disponibilidad",
+    "isla": "Tiendas y Konbini",
     "es_pattern": "¿Tienen {slot}?",
     "ja_pattern": "{slot}はありますか",
     "romaji_pattern": "{slot} wa arimasu ka",
     "slots": [
       { "es": "Wi-Fi", "ja": "Wi-Fi", "romaji": "waifai", "furigana": "Wi-Fi" },
-      { "es": "habitaciones libres", "ja": "空き部屋", "romaji": "akibeya", "furigana": "<ruby>空<rt>あ</rt></ruby>き<ruby>部屋<rt>べや</rt></ruby>" },
-      { "es": "bolsa", "ja": "袋", "romaji": "fukuro", "furigana": "<ruby>袋<rt>ふくろ</rt></ruby>" }
+      { "es": "cargador", "ja": "充電器", "romaji": "juudenki", "furigana": "<ruby>充電器<rt>じゅうでんき</rt></ruby>" },
+      { "es": "agua caliente (para fideos)", "ja": "お湯", "romaji": "oyu", "furigana": "お<ruby>湯<rt>ゆ</rt></ruby>" },
+      { "es": "medicinas", "ja": "薬", "romaji": "kusuri", "furigana": "<ruby>薬<rt>くすり</rt></ruby>" }
     ]
   }
 ]
