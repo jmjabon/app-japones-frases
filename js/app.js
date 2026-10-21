@@ -4,6 +4,7 @@ import { ScrambleMode } from './modes/scramble.js';
 import { ClozeMode } from './modes/cloze.js';
 import { SlotMode } from './modes/slot.js';
 import { RoleplayMode } from './modes/roleplay.js';
+import { DictationMode } from './modes/dictation.js';
 
 const State = {
     isFuriganaActive: true,
@@ -103,6 +104,12 @@ function renderMainMenu() {
                         <i data-lucide="messages-square" class="w-4 h-4"></i> Diálogos
                     </button>
                 </div>
+                <button id="btn-start-dictation" class="w-full mb-3 bg-violet-600 hover:bg-violet-700 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
+                    <i data-lucide="headphones" class="w-4 h-4"></i> Dictado Auditivo
+                </button>
+                <button id="btn-open-manager" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
+                    <i data-lucide="database"></i> Gestor de Frases
+                </button>
                 <button id="btn-open-manager" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
                     <i data-lucide="database"></i> Gestor de Frases
                 </button>
@@ -179,6 +186,20 @@ function renderMainMenu() {
             audio: AudioPlayer,
             onComplete: renderMainMenu
         });
+    });
+
+    document.getElementById('btn-start-dictation').addEventListener('click', () => {
+        const size = parseInt(document.getElementById('session-size').value);
+        State.sessionQueue = StorageManager.generateSession(State.activeIslands, size);
+        if (State.sessionQueue.length > 0) {
+            DictationMode.start({
+                queue: State.sessionQueue,
+                storage: StorageManager,
+                audio: AudioPlayer,
+                container: DOM.container,
+                onComplete: renderMainMenu
+            });
+        } else alert('Selecciona al menos una isla con frases.');
     });
 }
 

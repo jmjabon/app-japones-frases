@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nihongo-cache-v4';
+const CACHE_NAME = 'nihongo-cache-v5';
 const ASSETS = [
     './index.html',
     './manifest.json',
@@ -10,12 +10,12 @@ const ASSETS = [
     './js/modes/cloze.js',
     './js/modes/slot.js',
     './js/modes/roleplay.js',
+    './js/modes/dictation.js',
     './data/vocab.json',
     './data/templates.json',
     './data/roleplay.json'
 ];
 
-// Instalación: Cacheo tolerante a fallos individuales
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then(async (cache) => {
@@ -24,11 +24,9 @@ self.addEventListener('install', (event) => {
                     const response = await fetch(url);
                     if (response.ok) {
                         await cache.put(url, response);
-                    } else {
-                        console.warn(`[SW] No se pudo cachear (HTTP ${response.status}): ${url}`);
                     }
                 } catch (err) {
-                    console.warn(`[SW] Fallo al descargar para caché: ${url}`, err);
+                    console.warn(`[SW] Fallo al cachear: ${url}`, err);
                 }
             }
         })
@@ -36,7 +34,6 @@ self.addEventListener('install', (event) => {
     self.skipWaiting();
 });
 
-// Activación: Limpieza de cachés antiguas (v1, v2)
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((keys) => {
@@ -52,7 +49,6 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-// Intercepción de peticiones de red
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
