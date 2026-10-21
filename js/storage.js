@@ -103,5 +103,29 @@ export const StorageManager = {
             session.add(randomItem);
         }
         return Array.from(session);
+    },
+    
+    generateWeaknessSession(size) {
+        // Filtrar solo las frases que el usuario ha fallado (peso > 1 o con registro de fallos)
+        const weakItems = this.vocabData.filter(item => {
+            const stats = this.weights[item.id];
+            return stats && (stats.peso > 1 || stats.fallos > 0);
+        });
+
+        if (weakItems.length === 0) return [];
+
+        // Ordenar: primero las de mayor peso (urgentes), luego desempatar por cantidad de fallos históricos
+        weakItems.sort((a, b) => {
+            const statA = this.weights[a.id];
+            const statB = this.weights[b.id];
+            if (statB.peso !== statA.peso) {
+                return statB.peso - statA.peso; // Mayor peso primero
+            }
+            return statB.fallos - statA.fallos; // Mayor cantidad de fallos primero
+        });
+
+        // Devolver exactamente la cantidad solicitada (o menos si no hay tantos errores)
+        return weakItems.slice(0, size);
     }
 };
+

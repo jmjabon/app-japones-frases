@@ -84,6 +84,10 @@ function renderMainMenu() {
                     </select>
                 </div>
 
+                <button id="btn-weakness" class="w-full mb-6 bg-rose-500 hover:bg-rose-600 text-white py-3.5 rounded-xl font-bold shadow-md active:scale-95 transition-transform flex justify-center items-center gap-2">
+                    <i data-lucide="dumbbell"></i> Entrenar Debilidades
+                </button>
+
                 <div class="grid grid-cols-2 gap-2.5 mb-3">
                     <button id="btn-start-guided" class="bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
                         <i data-lucide="book-open" class="w-4 h-4"></i> Guiado
@@ -197,6 +201,19 @@ function renderMainMenu() {
                 onComplete: renderMainMenu
             });
         } else alert('Selecciona al menos una isla con frases.');
+    });
+
+    document.getElementById('btn-weakness').addEventListener('click', () => {
+        const size = parseInt(document.getElementById('session-size').value);
+        State.sessionQueue = StorageManager.generateWeaknessSession(size);
+        
+        if (State.sessionQueue.length > 0) {
+            // Lanzamos el modo Tarjetas Interactivas porque es el más eficiente 
+            // para consolidar memoria cuando hay una debilidad detectada.
+            renderCardMode(); 
+        } else {
+            alert('¡Felicidades! No tienes frases con fallos acumulados en tu registro. ¡Tu memoria está al 100%!');
+        }
     });
 }
 
