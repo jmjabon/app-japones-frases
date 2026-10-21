@@ -1,9 +1,12 @@
 export const ClozeMode = {
     state: null,
     clozeData: null,
+    isProcessing: false,
+    timerId: null,
 
     start(config) {
         this.state = config;
+        this.isProcessing = false;
         this.nextCard();
     },
 
@@ -12,7 +15,6 @@ export const ClozeMode = {
         const segmenter = new Intl.Segmenter('ja-JP', { granularity: 'word' });
         const segments = Array.from(segmenter.segment(text));
         
-        // Buscar todas las partículas en la frase
         let possibleGaps = [];
         segments.forEach((seg, index) => {
             if (targetParticles.includes(seg.segment)) {
@@ -20,17 +22,11 @@ export const ClozeMode = {
             }
         });
 
-        // Si la frase no tiene partículas, devolvemos null
         if (possibleGaps.length === 0) return null;
 
-        // Elegir una partícula al azar para ocultar
         const gap = possibleGaps[Math.floor(Math.random() * possibleGaps.length)];
-        
-        // Generar 3 trampas (distractors) que no sean la respuesta correcta
         let distractors = targetParticles.filter(p => p !== gap.word);
         distractors = distractors.sort(() => 0.5 - Math.random()).slice(0, 3);
-        
-        // Mezclar respuesta correcta con trampas
         const options = [...distractors, gap.word].sort(() => 0.5 - Math.random());
         
         return {
@@ -42,7 +38,7 @@ export const ClozeMode = {
     },
 
     nextCard() {
-        if (this.state.queue.length === 0) {
+        if (!this.state.queue || this.state.queue.length === 0) {
             this.state.onComplete();
             return;
         }
@@ -50,17 +46,23 @@ export const ClozeMode = {
         const item = this.state.queue[0];
         this.clozeData = this.generateCloze(item.ja);
 
-        // Si la frase no tiene partículas, la saltamos silenciosamente para no frustrar al usuario
+        // Si la frase no contiene partículas, pasar a la siguiente sin romper la cola
         if (!this.clozeData) {
             this.state.queue.shift();
             this.nextCard();
             return;
         }
 
+        this.isProcessing = false;
         this.render();
     },
 
     render() {
+        if (!this.state.queue || this.state.queue.length === 0) {
+            this.state.onComplete();
+            return;
+        }
+
         const item = this.state.queue[0];
         const isFlagged = this.state.storage.flags.includes(item.id);
 
@@ -104,45 +106,55 @@ export const ClozeMode = {
 
     attachEvents() {
         const item = this.state.queue[0];
+        if (!item) return;
 
-        // Lógica de validación
         document.querySelectorAll('.opt-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
+                if (this.isProcessing) return;
+                this.isProcessing = true;
+
+                // Desactivar todos los botones para evitar doble tap en iPad
+                document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+
                 const selected = e.currentTarget.dataset.val;
                 const gapBox = document.getElementById('gap-box');
-                
-                gapBox.textContent = selected;
-                
-                if (selected === this.clozeData.answer) {
-                    // Éxito
+                if (gapBox) gapBox.textContent = selected;
+
+                const isCorrect = (selected === this.clozeData.answer);
+
+                if (isCorrect) {
                     e.currentTarget.classList.replace('border-slate-200', 'border-emerald-500');
                     e.currentTarget.classList.replace('bg-slate-50', 'bg-emerald-50');
                     e.currentTarget.classList.replace('text-slate-700', 'text-emerald-700');
-                    gapBox.classList.replace('border-indigo-400', 'border-emerald-500');
-                    gapBox.classList.replace('text-indigo-600', 'text-emerald-600');
-                    
+                    if (gapBox) {
+                        gapBox.classList.replace('border-indigo-400', 'border-emerald-500');
+                        gapBox.classList.replace('text-indigo-600', 'text-emerald-600');
+                    }
                     this.state.audio.play(item.ja);
-                    setTimeout(() => this.handleFeedback(true), 1200);
+                    this.timerId = setTimeout(() => this.handleFeedback(true), 1100);
                 } else {
-                    // Fallo
                     e.currentTarget.classList.replace('border-slate-200', 'border-rose-400');
                     e.currentTarget.classList.replace('bg-slate-50', 'bg-rose-50');
                     e.currentTarget.classList.replace('text-slate-700', 'text-rose-700');
-                    
-                    setTimeout(() => this.handleFeedback(false), 800);
+                    this.timerId = setTimeout(() => this.handleFeedback(false), 800);
                 }
             });
         });
 
-        document.getElementById('btn-audio').addEventListener('click', () => this.state.audio.play(item.ja));
-        document.getElementById('btn-close').addEventListener('click', this.state.onComplete);
+        document.getElementById('btn-audio')?.addEventListener('click', () => this.state.audio.play(item.ja));
         
-        document.getElementById('btn-skip').addEventListener('click', () => {
+        document.getElementById('btn-close')?.addEventListener('click', () => {
+            if (this.timerId) clearTimeout(this.timerId);
+            this.state.onComplete();
+        });
+        
+        document.getElementById('btn-skip')?.addEventListener('click', () => {
+            if (this.timerId) clearTimeout(this.timerId);
             this.state.queue.shift();
             this.nextCard();
         });
         
-        document.getElementById('btn-flag').addEventListener('click', (e) => {
+        document.getElementById('btn-flag')?.addEventListener('click', (e) => {
             const isActive = this.state.storage.toggleFlag(item.id);
             e.currentTarget.classList.toggle('text-amber-500', isActive);
             e.currentTarget.classList.toggle('text-slate-400', !isActive);
@@ -150,15 +162,22 @@ export const ClozeMode = {
     },
 
     handleFeedback(isCorrect) {
+        if (!this.state.queue || this.state.queue.length === 0) {
+            this.state.onComplete();
+            return;
+        }
+
         const item = this.state.queue[0];
-        this.state.storage.updateWeight(item.id, isCorrect);
-        
+        if (item && item.id) {
+            this.state.storage.updateWeight(item.id, isCorrect);
+        }
+
         const currentItem = this.state.queue.shift();
-        if (!isCorrect) {
+        if (!isCorrect && currentItem) {
             const insertIndex = Math.min(3, this.state.queue.length);
             this.state.queue.splice(insertIndex, 0, currentItem);
         }
-        
+
         this.nextCard();
     }
 };

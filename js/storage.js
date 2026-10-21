@@ -1,7 +1,7 @@
 const DB_KEYS = {
     WEIGHTS: 'nihongo_weights_v2',
     FLAGS: 'nihongo_flags_v2',
-    CUSTOM_VOCAB: 'nihongo_custom_vocab_v2' // Guardará las ediciones hechas desde el iPad
+    CUSTOM_VOCAB: 'nihongo_custom_vocab_v2'
 };
 
 export const StorageManager = {
@@ -9,7 +9,6 @@ export const StorageManager = {
     weights: JSON.parse(localStorage.getItem(DB_KEYS.WEIGHTS)) || {},
     flags: JSON.parse(localStorage.getItem(DB_KEYS.FLAGS)) || [],
     customVocab: JSON.parse(localStorage.getItem(DB_KEYS.CUSTOM_VOCAB)) || {},
-
     sessionErrors: new Set(),
 
     async loadVocab() {
@@ -17,7 +16,6 @@ export const StorageManager = {
             const response = await fetch('./data/vocab.json');
             const baseVocab = await response.json();
             
-            // Fusionar el JSON estático con las ediciones locales hechas en la app
             this.vocabData = baseVocab.map(item => {
                 return this.customVocab[item.id] ? { ...item, ...this.customVocab[item.id] } : item;
             });
@@ -47,18 +45,24 @@ export const StorageManager = {
     },
 
     updateWeight(id, isCorrect) {
-        if (!this.weights[id]) return;
+        if (!this.weights[id]) {
+            this.weights[id] = { peso: 1, fallos: 0, aciertos: 0 };
+        }
 
-        if (!isCorrect) this.sessionErrors.add(id);
-
-        if (isCorrect) {
-            this.weights[id].peso = Math.max(1, this.weights[id].peso - 1);
-            this.weights[id].aciertos++;
-        } else {
+        if (!isCorrect) {
+            this.sessionErrors.add(id);
             this.weights[id].peso += 2;
             this.weights[id].fallos++;
+        } else {
+            this.weights[id].peso = Math.max(1, this.weights[id].peso - 1);
+            this.weights[id].aciertos++;
         }
+
         this.saveData();
+    },
+
+    getSessionErrors() {
+        return this.vocabData.filter(item => this.sessionErrors.has(item.id));
     },
 
     toggleFlag(id) {
@@ -73,13 +77,11 @@ export const StorageManager = {
     },
 
     updatePhrase(id, newData) {
-        // Guardar en el diccionario local persistente
         this.customVocab[id] = { ...this.customVocab[id], ...newData };
         localStorage.setItem(DB_KEYS.CUSTOM_VOCAB, JSON.stringify(this.customVocab));
         
-        // Actualizar la memoria activa
         const index = this.vocabData.findIndex(i => i.id === id);
-        if(index > -1) {
+        if (index > -1) {
             this.vocabData[index] = { ...this.vocabData[index], ...newData };
         }
     },
@@ -104,7 +106,7 @@ export const StorageManager = {
         });
 
         const session = new Set();
-        while(session.size < size && session.size < pool.length) {
+        while (session.size < size && session.size < pool.length) {
             const randomItem = weightedPool[Math.floor(Math.random() * weightedPool.length)];
             session.add(randomItem);
         }
@@ -113,7 +115,6 @@ export const StorageManager = {
 
     generateWeaknessSession(size) {
         this.sessionErrors.clear();
-        // Filtrar solo las frases que el usuario ha fallado (peso > 1 o con registro de fallos)
         const weakItems = this.vocabData.filter(item => {
             const stats = this.weights[item.id];
             return stats && (stats.peso > 1 || stats.fallos > 0);
@@ -121,18 +122,13 @@ export const StorageManager = {
 
         if (weakItems.length === 0) return [];
 
-        // Ordenar: primero las de mayor peso (urgentes), luego desempatar por cantidad de fallos históricos
         weakItems.sort((a, b) => {
             const statA = this.weights[a.id];
             const statB = this.weights[b.id];
-            if (statB.peso !== statA.peso) {
-                return statB.peso - statA.peso; // Mayor peso primero
-            }
-            return statB.fallos - statA.fallos; // Mayor cantidad de fallos primero
+            if (statB.peso !== statA.peso) return statB.peso - statA.peso;
+            return statB.fallos - statA.fallos;
         });
 
-        // Devolver exactamente la cantidad solicitada (o menos si no hay tantos errores)
         return weakItems.slice(0, size);
     }
 };
-

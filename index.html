@@ -14,6 +14,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        /* Reglas de máxima prioridad para Safari WebKit */
+        body.hide-furigana rt {
+            display: none !important;
+            font-size: 0 !important;
+            visibility: hidden !important;
+            line-height: 0 !important;
+        }
+        body.hide-romaji .romaji-text {
+            display: none !important;
+            visibility: hidden !important;
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-indigo-100">
     <!-- Navbar global -->

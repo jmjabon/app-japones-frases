@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nihongo-cache-v5';
+const CACHE_NAME = 'nihongo-cache-v7';
 const ASSETS = [
     './index.html',
     './manifest.json',
