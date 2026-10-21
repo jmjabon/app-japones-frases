@@ -1,0 +1,30 @@
+/* Soporte nativo de zonas seguras en iOS */
+.env-safe-top { padding-top: env(safe-area-inset-top); }
+.pb-safe-bottom { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
+
+/* Prevención de selección accidental de texto al tocar botones rápidamente */
+button, .isla-btn, .opt-btn, .opt-rp-btn, .ans-tile, .pool-tile {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Ocultar barra de scroll pero mantener funcionalidad de desplazamiento */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Animaciones de Tarjetas y Transición de Entrada */
+.perspective-1000 { perspective: 1000px; }
+.transform-style-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+.rotate-y-180 { transform: rotateY(180deg); }
+
+.fade-in { animation: fadeIn 0.25s ease-out forwards; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Control global de Furigana y Romaji */
+body.hide-furigana rt { display: none; }
+body.hide-romaji .romaji-text { display: none; }

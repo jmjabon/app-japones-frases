@@ -1,0 +1,107 @@
+[
+  {
+    "id": "rp_01",
+    "escenario": "Tienda de Conveniencia (Konbini)",
+    "contexto": "Has comprado un Bento (caja de comida). El cajero lo señala y te pregunta rápido:",
+    "hablante": "Cajero",
+    "audio_prompt": "お弁当温めますか？",
+    "prompt_romaji": "Obentou atatamemasu ka?",
+    "prompt_es": "¿Le caliento el bento (la comida)?",
+    "opciones": [
+      {
+        "id": "opt_1",
+        "ja": "はい、お願いします。",
+        "romaji": "Hai, onegaishimasu.",
+        "es": "Sí, por favor.",
+        "correcta": true,
+        "feedback": "¡Perfecto! Te lo meterán en el microondas unos segundos."
+      },
+      {
+        "id": "opt_2",
+        "ja": "大丈夫です。",
+        "romaji": "Daijoubu desu.",
+        "es": "No hace falta (estoy bien).",
+        "correcta": true,
+        "feedback": "Muy natural. Ideal si te lo vas a comer más tarde en el hotel."
+      },
+      {
+        "id": "opt_3",
+        "ja": "これをください。",
+        "romaji": "Kore o kudasai.",
+        "es": "Deme esto.",
+        "correcta": false,
+        "feedback": "Ya lo estás comprando, la pregunta es si quieres que lo calienten."
+      }
+    ]
+  },
+  {
+    "id": "rp_02",
+    "escenario": "Entrando a un Restaurante",
+    "contexto": "Abres la puerta corrediza. El camarero te saluda y levanta la mano preguntando:",
+    "hablante": "Camarero",
+    "audio_prompt": "いらっしゃいませ。何名様ですか？",
+    "prompt_romaji": "Irasshaimase. Nan-mei sama desu ka?",
+    "prompt_es": "Bienvenido. ¿Cuántas personas son?",
+    "opciones": [
+      {
+        "id": "opt_1",
+        "ja": "二人です。",
+        "romaji": "Futari desu.",
+        "es": "Somos dos.",
+        "correcta": true,
+        "feedback": "¡Exacto! Y puedes hacer la señal de la paz ✌️ con la mano para confirmar."
+      },
+      {
+        "id": "opt_2",
+        "ja": "予約しています。",
+        "romaji": "Yoyaku shite imasu.",
+        "es": "Tengo reserva.",
+        "correcta": true,
+        "feedback": "¡Válido! Si tienes reserva no hace falta decir cuántos sois, te pedirán el nombre."
+      },
+      {
+        "id": "opt_3",
+        "ja": "おすすめは何ですか。",
+        "romaji": "Osusume wa nan desu ka.",
+        "es": "¿Qué me recomienda?",
+        "correcta": false,
+        "feedback": "Demasiado pronto. ¡Primero necesitas que te den una mesa!"
+      }
+    ]
+  },
+  {
+    "id": "rp_03",
+    "escenario": "Recepción del Hotel (Consigna)",
+    "contexto": "Llegas al hotel a las 10:00 AM, pero el check-in es a las 15:00. El recepcionista te dice:",
+    "hablante": "Recepcionista",
+    "audio_prompt": "チェックインは午後三時になります。",
+    "prompt_romaji": "Chekku-in wa gogo san-ji ni narimasu.",
+    "prompt_es": "El check-in es a partir de las 3 de la tarde.",
+    "opciones": [
+      {
+        "id": "opt_1",
+        "ja": "荷物を預けてもいいですか？",
+        "romaji": "Nimotsu o azukete mo ii desu ka?",
+        "es": "¿Puedo dejar aquí el equipaje?",
+        "correcta": true,
+        "feedback": "¡Perfecto! Te guardarán las maletas mientras te vas a explorar Tokio."
+      },
+      {
+        "id": "opt_2",
+        "ja": "パスポートをなくしました。",
+        "romaji": "Pasupooto o nakushimashita.",
+        "es": "He perdido el pasaporte.",
+        "correcta": false,
+        "feedback": "¡Un susto innecesario para el recepcionista! Cuidado con esta frase."
+      },
+      {
+        "id": "opt_3",
+        "ja": "英語を話せますか？",
+        "romaji": "Eigo o hanasemasu ka?",
+        "es": "¿Habla inglés?",
+        "correcta": false,
+        "feedback": "No es necesario cortar la comunicación si ya has entendido la hora del check-in."
+      }
+    ]
+  }
+]
