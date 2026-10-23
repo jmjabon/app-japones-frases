@@ -1,7 +1,8 @@
 const DB_KEYS = {
     WEIGHTS: 'nihongo_weights_v2',
     FLAGS: 'nihongo_flags_v2',
-    CUSTOM_VOCAB: 'nihongo_custom_vocab_v2'
+    CUSTOM_VOCAB: 'nihongo_custom_vocab_v2',
+    MEDALS: 'nihongo_medals_v1'
 };
 
 export const StorageManager = {
@@ -42,6 +43,27 @@ export const StorageManager = {
     saveData() {
         localStorage.setItem(DB_KEYS.WEIGHTS, JSON.stringify(this.weights));
         localStorage.setItem(DB_KEYS.FLAGS, JSON.stringify(this.flags));
+    },
+
+    addExamPass(isla) {
+        if (!this.medals[isla]) this.medals[isla] = 0;
+        this.medals[isla] += 1;
+        this.saveData();
+    },
+
+    getMedal(isla) {
+        const count = this.medals[isla] || 0;
+        if (count >= 10) return { id: 'platino', name: 'Platino', bg: 'bg-slate-800', text: 'text-slate-200', icon: 'award' };
+        if (count >= 6) return { id: 'oro', name: 'Oro', bg: 'bg-yellow-100', text: 'text-yellow-600', icon: 'medal' };
+        if (count >= 3) return { id: 'plata', name: 'Plata', bg: 'bg-gray-100', text: 'text-gray-500', icon: 'medal' };
+        if (count >= 1) return { id: 'bronce', name: 'Bronce', bg: 'bg-amber-100', text: 'text-amber-700', icon: 'medal' };
+        return null;
+    },
+
+    getIslands() {
+        const islands = new Set();
+        this.vocabData.forEach(item => islands.add(item.isla));
+        return Array.from(islands);
     },
 
     updateWeight(id, isCorrect) {

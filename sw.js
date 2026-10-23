@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nihongo-cache-v7';
+const CACHE_NAME = 'nihongo-cache-v9';
 const ASSETS = [
     './index.html',
     './manifest.json',
@@ -13,7 +13,8 @@ const ASSETS = [
     './js/modes/dictation.js',
     './data/vocab.json',
     './data/templates.json',
-    './data/roleplay.json'
+    './data/roleplay.json',
+    './js/modes/exam.js'
 ];
 
 self.addEventListener('install', (event) => {

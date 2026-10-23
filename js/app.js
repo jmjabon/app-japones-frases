@@ -5,6 +5,7 @@ import { ClozeMode } from './modes/cloze.js';
 import { StructuresMode } from './modes/structures.js';
 import { RoleplayMode } from './modes/roleplay.js';
 import { DictationMode } from './modes/dictation.js';
+import { ExamMode } from './modes/exam.js';
 
 const State = {
     isFuriganaActive: true,
@@ -67,11 +68,22 @@ function renderMainMenu() {
                             <i data-lucide="chevron-down" class="text-slate-400 group-open:rotate-180 transition-transform"></i>
                         </summary>
                         <div class="p-3 border-t border-slate-200 flex flex-wrap gap-2 max-h-60 overflow-y-auto">
-                            ${islands.map(isla => `
-                                <button class="isla-btn px-3 py-1 rounded-full text-sm font-medium ${State.activeIslands.includes(isla) ? 'bg-indigo-100 text-indigo-700 border-indigo-200' : 'bg-white text-slate-500 border-slate-200'} border transition-colors" data-isla="${isla}">
-                                    ${isla}
-                                </button>
-                            `).join('')}
+                            ${islands.map(isla => {
+                                const isSelected = State.activeIslands.includes(isla);
+                                const medal = StorageManager.getMedal(isla);
+                                const medalBadge = medal ? `
+                                    <span class="inline-flex items-center gap-0.5 text-[10px] font-bold px-1.5 py-0.5 rounded-full ${medal.bg} ${medal.text} ml-1">
+                                        <i data-lucide="${medal.icon}" class="w-2.5 h-2.5"></i> ${medal.name}
+                                    </span>
+                                ` : '';
+
+                                return `
+                                    <button class="isla-btn px-3 py-1.5 rounded-full text-sm font-medium ${isSelected ? 'bg-indigo-100 text-indigo-700 border-indigo-200' : 'bg-white text-slate-500 border-slate-200'} border transition-colors flex items-center" data-isla="${isla}">
+                                        <span>${isla}</span>
+                                        ${medalBadge}
+                                    </button>
+                                `;
+                            }).join('')}
                         </div>
                     </details>
                 </div>
@@ -111,6 +123,9 @@ function renderMainMenu() {
                 </div>
                 <button id="btn-start-dictation" class="w-full mb-3 bg-violet-600 hover:bg-violet-700 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
                     <i data-lucide="headphones" class="w-4 h-4"></i> Dictado Auditivo
+                </button>
+                <button id="btn-start-exam" class="w-full mb-3 bg-rose-600 hover:bg-rose-700 text-white py-4 rounded-xl font-black shadow-md active:scale-95 transition-all flex justify-center items-center gap-2 tracking-wide uppercase text-sm border-b-4 border-rose-800">
+                     <i data-lucide="shield-alert" class="w-5 h-5"></i> Examen de Medalla
                 </button>
                 <button id="btn-open-manager" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
                     <i data-lucide="database"></i> Gestor de Frases
@@ -220,6 +235,17 @@ function renderMainMenu() {
             alert('¡Felicidades! No tienes frases con fallos acumulados en tu registro. ¡Tu memoria está al 100%!');
         }
     });
+
+    document.getElementById('btn-start-exam').addEventListener('click', () => {
+     if (State.activeIslands.length === 0) return alert('Selecciona al menos una isla para examinarte.');
+     ExamMode.start({
+         activeIslands: State.activeIslands,
+         storage: StorageManager,
+         audio: AudioPlayer,
+         container: DOM.container,
+         onComplete: renderMainMenu
+     });
+ });
 }
 
 // ====== MÓDULO 1: ESTUDIO GUIADO ======
