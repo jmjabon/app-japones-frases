@@ -1,5 +1,4 @@
 // storage.js
-
 const STORAGE_KEY = 'app_progreso_usuario';
 
 const DEFAULT_STATE = {
@@ -29,42 +28,25 @@ function persistData(data) {
 }
 
 export const StorageManager = {
-  /**
-   * Obtiene todos los datos almacenados de forma segura.
-   */
   getData() {
     return getRawData();
   },
 
-  /**
-   * Guarda o actualiza los datos completos.
-   */
   saveData(data) {
     persistData(data);
   },
 
-  /**
-   * Recupera la medalla o estado de logro de una categoría concreta.
-   * Evita el TypeError verificando la existencia de la colección antes de acceder a la clave.
-   */
   getMedal(categoryName) {
     const data = getRawData();
-
-    // Soporte para distintas estructuras habituales (data.medals, data.categories o la raíz)
     if (data.medals && typeof data.medals === 'object') {
       return data.medals[categoryName] ?? null;
     }
-
     if (data.categories && typeof data.categories === 'object') {
       return data.categories[categoryName] ?? null;
     }
-
     return null;
   },
 
-  /**
-   * Asigna o actualiza la medalla para una categoría.
-   */
   setMedal(categoryName, medalValue) {
     const data = getRawData();
     if (!data.medals || typeof data.medals !== 'object') {
@@ -74,9 +56,6 @@ export const StorageManager = {
     persistData(data);
   },
 
-  /**
-   * Obtiene el progreso general o puntuación de una categoría.
-   */
   getProgress(categoryName) {
     const data = getRawData();
     if (categoryName) {
@@ -85,9 +64,6 @@ export const StorageManager = {
     return data;
   },
 
-  /**
-   * Guarda el progreso de una categoría.
-   */
   saveProgress(categoryName, progressData) {
     const data = getRawData();
     if (!data.categories || typeof data.categories !== 'object') {
@@ -97,14 +73,24 @@ export const StorageManager = {
     persistData(data);
   },
 
-  /**
-   * Restablece todos los datos almacenados.
-   */
   clear() {
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch (error) {
       console.error("StorageManager: Error al limpiar localStorage.", error);
+    }
+  },
+
+  async loadVocab(url = './data/vocab.json') {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("StorageManager: Error al cargar el vocabulario.", error);
+      return []; 
     }
   }
 };
