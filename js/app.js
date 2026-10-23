@@ -183,13 +183,16 @@ function renderMainMenu() {
         const size = parseInt(document.getElementById('session-size').value);
         State.sessionQueue = StorageManager.generateSession(State.activeIslands, size);
         State.sessionInitialSize = State.sessionQueue.length;
+        
         if (State.sessionQueue.length > 0) {
             ClozeMode.start({
                 queue: State.sessionQueue,
                 storage: StorageManager,
                 audio: AudioPlayer,
                 container: DOM.container,
-                onComplete: renderSessionSummary
+                onComplete: renderSessionSummary,
+                onAbort: renderMainMenu,
+                onSizeAdjusted: (newSize) => { State.sessionInitialSize = newSize; }
             });
         } else alert('Selecciona al menos una isla con frases.');
     });

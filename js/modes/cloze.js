@@ -10,7 +10,6 @@ export const ClozeMode = {
         this.state = config;
         this.isProcessing = false;
         
-        // FILTRO PREVIO: Solo usar frases que tengan partículas para evitar saltos invisibles
         const targetParticles = ['は', 'が', 'を', 'に', 'で', 'へ', 'と', 'も', 'から', 'まで'];
         const segmenter = new Intl.Segmenter('ja-JP', { granularity: 'word' });
         
@@ -19,9 +18,15 @@ export const ClozeMode = {
             return segments.some(seg => targetParticles.includes(seg.segment));
         });
 
+        // 👇 AÑADE ESTO: Avisa a app.js del nuevo tamaño real tras el filtro
+        if (this.state.onSizeAdjusted) {
+            this.state.onSizeAdjusted(this.state.queue.length);
+        }
+
         if (this.state.queue.length === 0) {
             alert("No hay suficientes frases con partículas en esta selección.");
-            this.state.onComplete();
+            if (this.state.onAbort) this.state.onAbort();
+            else this.state.onComplete();
             return;
         }
 
@@ -143,7 +148,11 @@ export const ClozeMode = {
         });
 
         document.getElementById('btn-audio')?.addEventListener('click', () => this.state.audio.play(item.ja));
-        document.getElementById('btn-close')?.addEventListener('click', () => { clearTimeout(this.timerId); this.state.onComplete(); });
+        document.getElementById('btn-close')?.addEventListener('click', () => { 
+            if (this.timerId) clearTimeout(this.timerId); 
+            if (this.state.onAbort) this.state.onAbort(); 
+            else this.state.onComplete(); 
+        });
         document.getElementById('btn-skip')?.addEventListener('click', () => { clearTimeout(this.timerId); this.state.queue.shift(); this.nextCard(); });
     },
 
