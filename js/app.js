@@ -14,7 +14,8 @@ const State = {
     sessionQueue: [],
     blindEs: false, // Persiana Ocultar Español
     blindJa: false,  // Persiana Ocultar Japonés
-    sessionInitialSize: 0
+    sessionInitialSize: 0,
+    isIslandsMenuOpen: false
 };
 
 const DOM = {
@@ -62,7 +63,7 @@ function renderMainMenu() {
                 
                 <div class="mb-4">
                     <label class="block text-sm font-semibold text-slate-600 mb-2">Islas Lingüísticas</label>
-                    <details class="group bg-slate-50 rounded-xl border border-slate-200">
+                    <details id="details-islands" class="group bg-slate-50 rounded-xl border border-slate-200" ${State.isIslandsMenuOpen ? 'open' : ''}>
                         <summary class="p-3 font-medium text-slate-700 cursor-pointer list-none flex justify-between items-center">
                             <span>${State.activeIslands.length} de ${islands.length} seleccionadas</span>
                             <i data-lucide="chevron-down" class="text-slate-400 group-open:rotate-180 transition-transform"></i>
@@ -151,6 +152,11 @@ function renderMainMenu() {
             }
             renderMainMenu();
         });
+    });
+
+    // Rastreador del estado del desplegable
+    document.getElementById('details-islands')?.addEventListener('toggle', (e) => {
+        State.isIslandsMenuOpen = e.target.open;
     });
 
     document.getElementById('btn-start-cards').addEventListener('click', () => {
