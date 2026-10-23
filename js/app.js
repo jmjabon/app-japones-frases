@@ -2,7 +2,7 @@ import { StorageManager } from './storage.js';
 import { AudioPlayer } from './audio.js';
 import { ScrambleMode } from './modes/scramble.js';
 import { ClozeMode } from './modes/cloze.js';
-import { SlotMode } from './modes/slot.js';
+import { StructuresMode } from './modes/structures.js';
 import { RoleplayMode } from './modes/roleplay.js';
 import { DictationMode } from './modes/dictation.js';
 
@@ -102,8 +102,8 @@ function renderMainMenu() {
                     <button id="btn-start-cloze" class="bg-fuchsia-500 hover:bg-fuchsia-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
                         <i data-lucide="target" class="w-4 h-4"></i> Partículas
                     </button>
-                    <button id="btn-start-slot" class="bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
-                        <i data-lucide="zap" class="w-4 h-4"></i> Sustitución
+                    <button id="btn-start-structures" class="bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
+                        <i data-lucide="blocks" class="w-4 h-4"></i> Estructuras
                     </button>
                     <button id="btn-start-roleplay" class="bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2 text-sm">
                         <i data-lucide="messages-square" class="w-4 h-4"></i> Diálogos
@@ -177,8 +177,8 @@ function renderMainMenu() {
         } else alert('Selecciona al menos una isla con frases.');
     });
 
-    document.getElementById('btn-start-slot').addEventListener('click', () => {
-        SlotMode.start({
+    document.getElementById('btn-start-structures').addEventListener('click', () => {
+        StructuresMode.start({
             container: DOM.container,
             audio: AudioPlayer,
             onComplete: renderMainMenu

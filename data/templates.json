@@ -2,54 +2,167 @@
   {
     "id": "tpl_01",
     "isla": "Tránsito y Navegación",
+    "formula": "[ LUGAR / OBJETO ] + はどこですか",
+    "explicacion": "La partícula は (wa) marca el tema de la frase. Úsalo para ubicar físicamente cualquier lugar, objeto o persona que estés buscando.",
     "es_pattern": "¿Dónde está {slot}?",
     "ja_pattern": "{slot}はどこですか",
     "romaji_pattern": "{slot} wa doko desu ka",
     "slots": [
-      { "es": "el baño", "ja": "トイレ", "romaji": "toire", "furigana": "トイレ" },
-      { "es": "la estación de tren", "ja": "駅", "romaji": "eki", "furigana": "<ruby>駅<rt>えき</rt></ruby>" },
-      { "es": "la salida", "ja": "出口", "romaji": "deguchi", "furigana": "<ruby>出口<rt>でぐち</rt></ruby>" },
-      { "es": "el cajero automático", "ja": "ATM", "romaji": "eetiiemu", "furigana": "ATM" },
-      { "es": "la taquilla de billetes", "ja": "切符売り場", "romaji": "kippu uriba", "furigana": "<ruby>切符<rt>きっぷ</rt></ruby><ruby>売<rt>う</rt></ruby>り<ruby>場<rt>ば</rt></ruby>" }
+      { "categoria": "Infraestructura", "es": "la estación de tren", "ja": "駅", "romaji": "eki", "furigana": "<ruby>駅<rt>えき</rt></ruby>" },
+      { "categoria": "Infraestructura", "es": "la parada de autobús", "ja": "バス乗り場", "romaji": "basu noriba", "furigana": "バス<ruby>乗<rt>の</rt></ruby>り<ruby>場<rt>ば</rt></ruby>" },
+      { "categoria": "Infraestructura", "es": "la salida", "ja": "出口", "romaji": "deguchi", "furigana": "<ruby>出口<rt>でぐち</rt></ruby>" },
+      { "categoria": "Infraestructura", "es": "la taquilla de billetes", "ja": "切符売り場", "romaji": "kippu uriba", "furigana": "<ruby>切符<rt>きっぷ</rt></ruby><ruby>売<rt>う</rt></ruby>り<ruby>場<rt>ば</rt></ruby>" },
+      { "categoria": "Infraestructura", "es": "el andén", "ja": "ホーム", "romaji": "hoomu", "furigana": "ホーム" },
+      { "categoria": "Servicios", "es": "el baño", "ja": "トイレ", "romaji": "toire", "furigana": "トイレ" },
+      { "categoria": "Servicios", "es": "el cajero (ATM)", "ja": "ATM", "romaji": "eetiiemu", "furigana": "ATM" },
+      { "categoria": "Servicios", "es": "la farmacia", "ja": "薬局", "romaji": "yakkyoku", "furigana": "<ruby>薬局<rt>やっきょく</rt></ruby>" },
+      { "categoria": "Servicios", "es": "la tienda de conveniencia", "ja": "コンビニ", "romaji": "konbini", "furigana": "コンビニ" },
+      { "categoria": "Servicios", "es": "la comisaría", "ja": "交番", "romaji": "kouban", "furigana": "<ruby>交番<rt>こうばん</rt></ruby>" },
+      { "categoria": "Turismo", "es": "el hotel", "ja": "ホテル", "romaji": "hoteru", "furigana": "ホテル" },
+      { "categoria": "Turismo", "es": "el templo", "ja": "お寺", "romaji": "otera", "furigana": "お<ruby>寺<rt>てら</rt></ruby>" },
+      { "categoria": "Turismo", "es": "el santuario", "ja": "神社", "romaji": "jinja", "furigana": "<ruby>神社<rt>じんじゃ</rt></ruby>" },
+      { "categoria": "Turismo", "es": "el castillo", "ja": "お城", "romaji": "oshiro", "furigana": "お<ruby>城<rt>しろ</rt></ruby>" },
+      { "categoria": "Interiores", "es": "el ascensor", "ja": "エレベーター", "romaji": "erebeetaa", "furigana": "エレベーター" },
+      { "categoria": "Interiores", "es": "las escaleras", "ja": "階段", "romaji": "kaidan", "furigana": "<ruby>階段<rt>かいだん</rt></ruby>" },
+      { "categoria": "Interiores", "es": "la caja (pagos)", "ja": "レジ", "romaji": "reji", "furigana": "レジ" },
+      { "categoria": "Interiores", "es": "la consigna de monedas", "ja": "コインロッカー", "romaji": "koin rokkaa", "furigana": "コインロッカー" }
     ]
   },
   {
     "id": "tpl_02",
     "isla": "Tránsito y Navegación",
+    "formula": "[ DESTINO ] + に行きたいです",
+    "explicacion": "La partícula に (ni) marca la dirección o meta de un movimiento. 'Ikitai desu' expresa el deseo directo de ir a ese lugar.",
     "es_pattern": "Quiero ir a {slot}.",
     "ja_pattern": "{slot}に行きたいです",
     "romaji_pattern": "{slot} ni ikitai desu",
     "slots": [
-      { "es": "Tokio", "ja": "東京", "romaji": "toukyou", "furigana": "<ruby>東京<rt>とうきょう</rt></ruby>" },
-      { "es": "Akihabara", "ja": "秋葉原", "romaji": "akihabara", "furigana": "<ruby>秋葉原<rt>あきはばら</rt></ruby>" },
-      { "es": "el aeropuerto", "ja": "空港", "romaji": "kuukou", "furigana": "<ruby>空港<rt>くうこう</rt></ruby>" },
-      { "es": "el hotel", "ja": "ホテル", "romaji": "hoteru", "furigana": "ホテル" }
+      { "categoria": "Ciudades", "es": "Tokio", "ja": "東京", "romaji": "Toukyou", "furigana": "<ruby>東京<rt>とうきょう</rt></ruby>" },
+      { "categoria": "Ciudades", "es": "Kioto", "ja": "京都", "romaji": "Kyouto", "furigana": "<ruby>京都<rt>きょうと</rt></ruby>" },
+      { "categoria": "Ciudades", "es": "Osaka", "ja": "大阪", "romaji": "Oosaka", "furigana": "<ruby>大阪<rt>おおさか</rt></ruby>" },
+      { "categoria": "Barrios", "es": "Shibuya", "ja": "渋谷", "romaji": "Shibuya", "furigana": "<ruby>渋谷<rt>しぶや</rt></ruby>" },
+      { "categoria": "Barrios", "es": "Akihabara", "ja": "秋葉原", "romaji": "Akihabara", "furigana": "<ruby>秋葉原<rt>あきはばら</rt></ruby>" },
+      { "categoria": "Transporte", "es": "el aeropuerto", "ja": "空港", "romaji": "kuukou", "furigana": "<ruby>空港<rt>くうこう</rt></ruby>" },
+      { "categoria": "Transporte", "es": "la estación de Shinjuku", "ja": "新宿駅", "romaji": "Shinjuku eki", "furigana": "<ruby>新宿<rt>しんじゅく</rt></ruby><ruby>駅<rt>えき</rt></ruby>" },
+      { "categoria": "Alojamiento", "es": "este hotel", "ja": "このホテル", "romaji": "kono hoteru", "furigana": "このホテル" },
+      { "categoria": "Alojamiento", "es": "mi habitación", "ja": "私の部屋", "romaji": "watashi no heya", "furigana": "<ruby>私<rt>わたし</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>" },
+      { "categoria": "Emergencia", "es": "un hospital", "ja": "病院", "romaji": "byouin", "furigana": "<ruby>病院<rt>びょういん</rt></ruby>" }
     ]
   },
   {
     "id": "tpl_03",
-    "isla": "Restaurante e Izakaya",
-    "es_pattern": "Por favor, deme {slot}.",
+    "isla": "Compras y Restaurantes",
+    "formula": "[ OBJETO ] + をお願いします",
+    "explicacion": "La partícula を (o) marca el objeto que recibe la acción. Es la forma más versátil y educada para pedir objetos, raciones o servicios.",
+    "es_pattern": "Deme {slot}, por favor.",
     "ja_pattern": "{slot}をお願いします",
     "romaji_pattern": "{slot} o onegaishimasu",
     "slots": [
-      { "es": "agua", "ja": "お水", "romaji": "omizu", "furigana": "お<ruby>水<rt>みず</rt></ruby>" },
-      { "es": "la cuenta", "ja": "お会計", "romaji": "okaikei", "furigana": "お<ruby>会計<rt>かいけい</rt></ruby>" },
-      { "es": "un menú en inglés", "ja": "英語のメニュー", "romaji": "eigo no menyuu", "furigana": "<ruby>英語<rt>えいご</rt></ruby>のメニュー" },
-      { "es": "platos pequeños", "ja": "取り皿", "romaji": "torizara", "furigana": "<ruby>取<rt>と</rt></ruby>り<ruby>皿<rt>ざら</rt></ruby>" }
+      { "categoria": "Restaurante", "es": "agua", "ja": "お水", "romaji": "omizu", "furigana": "お<ruby>水<rt>みず</rt></ruby>" },
+      { "categoria": "Restaurante", "es": "la cuenta", "ja": "お会計", "romaji": "okaikei", "furigana": "お<ruby>会計<rt>かいけい</rt></ruby>" },
+      { "categoria": "Restaurante", "es": "un menú en inglés", "ja": "英語のメニュー", "romaji": "eigo no menyuu", "furigana": "<ruby>英語<rt>えいご</rt></ruby>のメニュー" },
+      { "categoria": "Restaurante", "es": "toallitas húmedas", "ja": "おしぼり", "romaji": "oshibori", "furigana": "おしぼり" },
+      { "categoria": "Restaurante", "es": "una cerveza", "ja": "ビール", "romaji": "biiru", "furigana": "ビール" },
+      { "categoria": "Tiendas", "es": "una bolsa", "ja": "袋", "romaji": "fukuro", "furigana": "<ruby>袋<rt>ふくろ</rt></ruby>" },
+      { "categoria": "Tiendas", "es": "palillos", "ja": "お箸", "romaji": "ohashi", "furigana": "お<ruby>箸<rt>はし</rt></ruby>" },
+      { "categoria": "Tiendas", "es": "el recibo", "ja": "レシート", "romaji": "reshiito", "furigana": "レシート" },
+      { "categoria": "Tiendas", "es": "esto (señalando)", "ja": "これ", "romaji": "kore", "furigana": "これ" },
+      { "categoria": "Hotel", "es": "la llave", "ja": "鍵", "romaji": "kagi", "furigana": "<ruby>鍵<rt>かぎ</rt></ruby>" },
+      { "categoria": "Hotel", "es": "el check-in", "ja": "チェックイン", "romaji": "chekkuin", "furigana": "チェックイン" },
+      { "categoria": "Hotel", "es": "un taxi", "ja": "タクシー", "romaji": "takushii", "furigana": "タクシー" },
+      { "categoria": "Cantidades", "es": "para dos personas", "ja": "二人", "romaji": "futari", "furigana": "<ruby>二人<rt>ふたり</rt></ruby>" },
+      { "categoria": "Cantidades", "es": "uno de estos", "ja": "これを一つ", "romaji": "kore o hitotsu", "furigana": "これを<ruby>一<rt>ひと</rt></ruby>つ" }
     ]
   },
   {
     "id": "tpl_04",
-    "isla": "Tiendas y Konbini",
+    "isla": "Compras y Restaurantes",
+    "formula": "[ COSA / SERVICIO ] + はありますか",
+    "explicacion": "Comprueba el inventario o la existencia de algo. Significa literalmente 'En cuanto a [X]... ¿hay/existe?'. Fundamental para buscar opciones.",
     "es_pattern": "¿Tienen {slot}?",
     "ja_pattern": "{slot}はありますか",
     "romaji_pattern": "{slot} wa arimasu ka",
     "slots": [
-      { "es": "Wi-Fi", "ja": "Wi-Fi", "romaji": "waifai", "furigana": "Wi-Fi" },
-      { "es": "cargador", "ja": "充電器", "romaji": "juudenki", "furigana": "<ruby>充電器<rt>じゅうでんき</rt></ruby>" },
-      { "es": "agua caliente (para fideos)", "ja": "お湯", "romaji": "oyu", "furigana": "お<ruby>湯<rt>ゆ</rt></ruby>" },
-      { "es": "medicinas", "ja": "薬", "romaji": "kusuri", "furigana": "<ruby>薬<rt>くすり</rt></ruby>" }
+      { "categoria": "Dietas/Menú", "es": "menú vegetariano", "ja": "ベジタリアンのメニュー", "romaji": "bejitarian no menyuu", "furigana": "ベジタリアンのメニュー" },
+      { "categoria": "Dietas/Menú", "es": "opciones sin carne", "ja": "肉なしの料理", "romaji": "niku nashi no ryouri", "furigana": "<ruby>肉<rt>にく</rt></ruby>なしの<ruby>料理<rt>りょうり</rt></ruby>" },
+      { "categoria": "Dietas/Menú", "es": "platos recomendados", "ja": "おすすめ", "romaji": "osusume", "furigana": "おすすめ" },
+      { "categoria": "Tecnología", "es": "Wi-Fi", "ja": "Wi-Fi", "romaji": "waifai", "furigana": "Wi-Fi" },
+      { "categoria": "Tecnología", "es": "cargador", "ja": "充電器", "romaji": "juudenki", "furigana": "<ruby>充電器<rt>じゅうでんき</rt></ruby>" },
+      { "categoria": "Compras", "es": "una talla más grande", "ja": "もっと大きいサイズ", "romaji": "motto ookii saizu", "furigana": "もっと<ruby>大<rt>おお</rt></ruby>きいサイズ" },
+      { "categoria": "Compras", "es": "una talla más pequeña", "ja": "もっと小さいサイズ", "romaji": "motto chiisai saizu", "furigana": "もっと<ruby>小<rt>ちい</rt></ruby>さいサイズ" },
+      { "categoria": "Hotel", "es": "habitaciones libres", "ja": "空き部屋", "romaji": "akibeya", "furigana": "<ruby>空<rt>あ</rt></ruby>き<ruby>部屋<rt>べや</rt></ruby>" },
+      { "categoria": "Hotel", "es": "agua caliente", "ja": "お湯", "romaji": "oyu", "furigana": "お<ruby>湯<rt>ゆ</rt></ruby>" }
+    ]
+  },
+  {
+    "id": "tpl_05",
+    "isla": "Tránsito y Navegación",
+    "formula": "[ EVENTO ] + は何時ですか",
+    "explicacion": "Estructura para preguntar horarios y tiempos. 'Nan-ji' significa literalmente 'qué hora'. Ideal para cuadrar agendas de viaje.",
+    "es_pattern": "¿A qué hora es {slot}?",
+    "ja_pattern": "{slot}は何時ですか",
+    "romaji_pattern": "{slot} wa nanji desu ka",
+    "slots": [
+      { "categoria": "Hotel", "es": "el check-in", "ja": "チェックイン", "romaji": "chekkuin", "furigana": "チェックイン" },
+      { "categoria": "Hotel", "es": "el check-out", "ja": "チェックアウト", "romaji": "chekkuauto", "furigana": "チェックアウト" },
+      { "categoria": "Hotel", "es": "el desayuno", "ja": "朝ごはん", "romaji": "asagohan", "furigana": "<ruby>朝<rt>あさ</rt></ruby>ごはん" },
+      { "categoria": "Transporte", "es": "el próximo tren", "ja": "次の電車", "romaji": "tsugi no densha", "furigana": "<ruby>次<rt>つぎ</rt></ruby>の<ruby>電車<rt>でんしゃ</rt></ruby>" },
+      { "categoria": "Transporte", "es": "el último tren", "ja": "終電", "romaji": "shuuden", "furigana": "<ruby>終電<rt>しゅうでん</rt></ruby>" },
+      { "categoria": "Transporte", "es": "el embarque", "ja": "搭乗", "romaji": "toujou", "furigana": "<ruby>搭乗<rt>とうじょう</rt></ruby>" },
+      { "categoria": "Tiendas", "es": "el cierre", "ja": "閉店", "romaji": "heiten", "furigana": "<ruby>閉店<rt>へいてん</rt></ruby>" },
+      { "categoria": "Tiendas", "es": "la apertura", "ja": "開店", "romaji": "kaiten", "furigana": "<ruby>開店<rt>かいてん</rt></ruby>" }
+    ]
+  },
+  {
+    "id": "tpl_06",
+    "isla": "Compras y Restaurantes",
+    "formula": "[ OBJETO / SERVICIO ] + はいくらですか",
+    "explicacion": "Plantilla esencial para transacciones económicas. 'Ikura' significa 'cuánto'. Puedes usarlo señalando objetos o preguntando por tarifas completas.",
+    "es_pattern": "¿Cuánto cuesta {slot}?",
+    "ja_pattern": "{slot}はいくらですか",
+    "romaji_pattern": "{slot} wa ikura desu ka",
+    "slots": [
+      { "categoria": "Básico", "es": "esto", "ja": "これ", "romaji": "kore", "furigana": "これ" },
+      { "categoria": "Básico", "es": "eso", "ja": "それ", "romaji": "sore", "furigana": "それ" },
+      { "categoria": "Básico", "es": "todo (el total)", "ja": "全部で", "romaji": "zenbu de", "furigana": "<ruby>全部<rt>ぜんぶ</rt></ruby>で" },
+      { "categoria": "Transporte", "es": "el billete de adulto", "ja": "大人一枚", "romaji": "otona ichimai", "furigana": "<ruby>大人<rt>おとな</rt></ruby><ruby>一枚<rt>いちまい</rt></ruby>" },
+      { "categoria": "Transporte", "es": "el billete de niño", "ja": "子供一枚", "romaji": "kodomo ichimai", "furigana": "<ruby>子供<rt>こども</rt></ruby><ruby>一枚<rt>いちまい</rt></ruby>" },
+      { "categoria": "Hotel", "es": "una noche", "ja": "一泊", "romaji": "ippaku", "furigana": "<ruby>一泊<rt>いっぱく</rt></ruby>" },
+      { "categoria": "Servicios", "es": "la entrada (ticket)", "ja": "入場料", "romaji": "nyuujouryou", "furigana": "<ruby>入場料<rt>にゅうじょうりょう</rt></ruby>" }
+    ]
+  },
+  {
+    "id": "tpl_07",
+    "isla": "Crisis y Emergencias",
+    "formula": "[ COSA ] + がありません",
+    "explicacion": "La partícula が (ga) marca el sujeto de existencia. 'Arimasen' significa que no hay o no existe. Es tu comodín para reportar averías, cosas perdidas o faltas en tu habitación.",
+    "es_pattern": "No hay / Me falta {slot}.",
+    "ja_pattern": "{slot}がありません",
+    "romaji_pattern": "{slot} ga arimasen",
+    "slots": [
+      { "categoria": "Habitación", "es": "papel higiénico", "ja": "トイレットペーパー", "romaji": "toiretto peepaa", "furigana": "トイレットペーパー" },
+      { "categoria": "Habitación", "es": "una toalla", "ja": "タオル", "romaji": "taoru", "furigana": "タオル" },
+      { "categoria": "Habitación", "es": "agua caliente", "ja": "お湯", "romaji": "oyu", "furigana": "お<ruby>湯<rt>ゆ</rt></ruby>" },
+      { "categoria": "Restaurante", "es": "palillos", "ja": "お箸", "romaji": "ohashi", "furigana": "お<ruby>箸<rt>はし</rt></ruby>" },
+      { "categoria": "Personal", "es": "mi reserva", "ja": "私の予約", "romaji": "watashi no yoyaku", "furigana": "<ruby>私<rt>わたし</rt></ruby>の<ruby>予約<rt>よやく</rt></ruby>" },
+      { "categoria": "Personal", "es": "mi pasaporte", "ja": "パスポート", "romaji": "pasupooto", "furigana": "パスポート" },
+      { "categoria": "Personal", "es": "la señal de Wi-Fi", "ja": "Wi-Fiの電波", "romaji": "waifai no denpa", "furigana": "Wi-Fiの<ruby>電波<rt>でんぱ</rt></ruby>" }
+    ]
+  },
+  {
+    "id": "tpl_08",
+    "isla": "Cortesía y Permisos",
+    "formula": "[ ACCIÓN ] + はできますか",
+    "explicacion": "Transformamos acciones en sustantivos para hacer la gramática ultra-sencilla. 'Dekimasu ka' significa '¿Es posible?'. Sirve para preguntar si aceptan pagos, si puedes hacer check-in, etc.",
+    "es_pattern": "¿Puedo / Es posible {slot}?",
+    "ja_pattern": "{slot}はできますか",
+    "romaji_pattern": "{slot} wa dekimasu ka",
+    "slots": [
+      { "categoria": "Pagos", "es": "pagar con tarjeta de crédito", "ja": "クレジットカード払い", "romaji": "kurejitto kaado barai", "furigana": "クレジットカード<ruby>払<rt>ばら</rt></ruby>い" },
+      { "categoria": "Pagos", "es": "hacer tax-free (libre de impuestos)", "ja": "免税", "romaji": "menzei", "furigana": "<ruby>免税<rt>めんぜい</rt></ruby>" },
+      { "categoria": "Restaurante", "es": "pedir para llevar", "ja": "持ち帰り", "romaji": "mochikaeri", "furigana": "<ruby>持<rt>も</rt></ruby>ち<ruby>帰<rt>かえ</rt></ruby>り" },
+      { "categoria": "Hotel", "es": "dejar las maletas (guardarlas)", "ja": "荷物預かり", "romaji": "nimotsu azukari", "furigana": "<ruby>荷物<rt>にもつ</rt></ruby><ruby>預<rt>あず</rt></ruby>かり" },
+      { "categoria": "Tiendas", "es": "probarme esto", "ja": "試着", "romaji": "shichaku", "furigana": "<ruby>試着<rt>しちゃく</rt></ruby>" }
     ]
   }
 ]

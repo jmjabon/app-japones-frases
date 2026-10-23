@@ -8,7 +8,7 @@ const ASSETS = [
     './js/audio.js',
     './js/modes/scramble.js',
     './js/modes/cloze.js',
-    './js/modes/slot.js',
+    './js/modes/structures.js',
     './js/modes/roleplay.js',
     './js/modes/dictation.js',
     './data/vocab.json',
