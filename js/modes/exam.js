@@ -59,7 +59,7 @@ export const ExamMode = {
     },
 
     renderQuestionContainer(item, type) {
-        // Interfaz unificada de examen (sin botones de escape, modo estricto)
+        // Interfaz unificada de examen con botón de cerrar
         this.state.container.innerHTML = `
             <div class="fade-in max-w-md mx-auto flex flex-col h-[85vh]">
                 <div class="bg-rose-600 text-white rounded-2xl p-4 shadow-md mb-4 flex justify-between items-center">
@@ -67,7 +67,10 @@ export const ExamMode = {
                         <div class="text-[10px] uppercase tracking-widest font-bold opacity-80">Evaluación de Fluidez</div>
                         <div class="font-bold text-lg">Pregunta ${this.currentIndex + 1} de ${this.totalQuestions}</div>
                     </div>
-                    <i data-lucide="shield-alert" class="w-8 h-8 opacity-90"></i>
+                    <!-- NUEVO BOTÓN DE CERRAR -->
+                    <button id="ex-btn-close" class="p-2 text-rose-200 hover:text-white bg-rose-700/50 hover:bg-rose-700 rounded-full transition-colors active:scale-95">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
                 </div>
                 
                 <div id="exam-arena" class="flex-1 flex flex-col bg-white border border-slate-200 shadow-sm rounded-3xl p-6 relative">
@@ -77,6 +80,13 @@ export const ExamMode = {
         `;
         lucide.createIcons();
         const arena = document.getElementById('exam-arena');
+
+        // EVENTO PARA EL BOTÓN DE CERRAR
+        document.getElementById('ex-btn-close').addEventListener('click', () => {
+            if (confirm('¿Seguro que quieres abandonar el examen? Perderás el progreso de esta prueba.')) {
+                this.state.onComplete();
+            }
+        });
 
         if (type === 'dictation') this.injectDictation(arena, item);
         else if (type === 'scramble') this.injectScramble(arena, item);

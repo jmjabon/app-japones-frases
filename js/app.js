@@ -135,19 +135,21 @@ function renderMainMenu() {
     `;
     lucide.createIcons();
 
+    // ASIGNAR EVENTOS A LAS ISLAS
     document.querySelectorAll('.isla-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const isla = e.target.dataset.isla;
+            // currentTarget obliga a leer el atributo del botón, ignorando clics en iconos o spans internos
+            const isla = e.currentTarget.dataset.isla;
+            if (!isla) return; // Salvaguarda anti-errores
+
             if (State.activeIslands.includes(isla)) {
+                // Si ya está, la quitamos
                 State.activeIslands = State.activeIslands.filter(i => i !== isla);
-                e.target.classList.replace('bg-indigo-100', 'bg-white');
-                e.target.classList.replace('text-indigo-700', 'text-slate-500');
             } else {
+                // Si no está, la añadimos
                 State.activeIslands.push(isla);
-                e.target.classList.replace('bg-white', 'bg-indigo-100');
-                e.target.classList.replace('text-slate-500', 'text-indigo-700');
             }
-            document.querySelector('summary span').textContent = `${State.activeIslands.length} de ${islands.length} seleccionadas`;
+            renderMainMenu();
         });
     });
 
