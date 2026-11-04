@@ -152,4 +152,56 @@ export const StorageManager = {
 
         return weakItems.slice(0, size);
     }
+
+    // EXPORTAR PROGRESO (Genera un archivo JSON descargable)
+    exportProgress() {
+        const backupData = {
+            version: 2,
+            exportedAt: new Date().toISOString(),
+            medals: this.medals,
+            weights: this.weights,
+            flags: this.flags,
+            customVocab: this.customVocab
+        };
+
+        const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        const dateStr = new Date().toISOString().slice(0, 10);
+        
+        a.href = url;
+        a.download = `nihongo_flow_backup_${dateStr}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    },
+
+    // IMPORTAR PROGRESO (Lee el JSON y restaura localStorage)
+    importProgress(file, onSuccess, onError) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const data = JSON.parse(e.target.result);
+                if (!data || typeof data !== 'object') {
+                    throw new Error('Estructura de datos inválida');
+                }
+
+                if (data.medals) this.medals = data.medals;
+                if (data.weights) this.weights = data.weights;
+                if (data.flags) this.flags = data.flags;
+                if (data.customVocab) this.customVocab = data.customVocab;
+
+                this.saveData();
+                if (onSuccess) onSuccess();
+            } catch (err) {
+                console.error('[Storage] Error al importar progreso:', err);
+                if (onError) onError(err);
+            }
+        };
+        reader.onerror = () => {
+            if (onError) onError(new Error('Fallo de lectura de archivo'));
+        };
+        reader.readAsText(file);
+    },
 };

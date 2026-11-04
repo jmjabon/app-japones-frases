@@ -131,6 +131,20 @@ function renderMainMenu() {
                 <button id="btn-open-manager" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
                     <i data-lucide="database"></i> Gestor de Frases
                 </button>
+                <button id="btn-open-manager" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-3 rounded-xl font-bold shadow-sm transition-colors flex justify-center items-center gap-2">
+                    <i data-lucide="database"></i> Gestor de Frases
+                </button>
+
+                <!-- BOTONES DE EXPORTAR E IMPORTAR PROGRESO -->
+                <div class="grid grid-cols-2 gap-2.5 mt-3">
+                    <button id="btn-export-backup" class="py-2.5 px-3 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl font-bold text-xs shadow-sm flex justify-center items-center gap-1.5 active:scale-95 transition-all">
+                        <i data-lucide="download" class="w-4 h-4 text-indigo-600"></i> Exportar Progreso
+                    </button>
+                    <button id="btn-import-backup" class="py-2.5 px-3 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl font-bold text-xs shadow-sm flex justify-center items-center gap-1.5 active:scale-95 transition-all">
+                        <i data-lucide="upload" class="w-4 h-4 text-emerald-600"></i> Importar Progreso
+                    </button>
+                </div>
+                <input type="file" id="file-import-input" accept=".json" class="hidden" />
             </div>
         </div>
     `;
@@ -257,6 +271,33 @@ function renderMainMenu() {
          onComplete: renderMainMenu
      });
  });
+
+ // Exportación de datos
+    document.getElementById('btn-export-backup')?.addEventListener('click', () => {
+        StorageManager.exportProgress();
+    });
+
+    // Importación de datos
+    const fileInput = document.getElementById('file-import-input');
+    document.getElementById('btn-import-backup')?.addEventListener('click', () => {
+        fileInput?.click();
+    });
+
+    fileInput?.addEventListener('change', (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        if (confirm('¿Restaurar esta copia de seguridad? Se actualizarán tus medallas, estadísticas y pesos acumulados.')) {
+            StorageManager.importProgress(file, () => {
+                alert('¡Progreso y medallas restaurados correctamente!');
+                renderMainMenu();
+            }, () => {
+                alert('El archivo seleccionado no corresponde a un respaldo válido de Nihongo Flow.');
+            });
+        }
+        e.target.value = '';
+    });
+
 }
 
 // ====== MÓDULO 1: ESTUDIO GUIADO ======
