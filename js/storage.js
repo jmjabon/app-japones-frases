@@ -151,7 +151,7 @@ export const StorageManager = {
         });
 
         return weakItems.slice(0, size);
-    }
+    },
 
     // EXPORTAR PROGRESO (Genera un archivo JSON descargable)
     exportProgress() {
