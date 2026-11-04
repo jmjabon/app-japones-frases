@@ -164,5 +164,69 @@
       { "categoria": "Hotel", "es": "dejar las maletas (guardarlas)", "ja": "荷物預かり", "romaji": "nimotsu azukari", "furigana": "<ruby>荷物<rt>にもつ</rt></ruby><ruby>預<rt>あず</rt></ruby>かり" },
       { "categoria": "Tiendas", "es": "probarme esto", "ja": "試着", "romaji": "shichaku", "furigana": "<ruby>試着<rt>しちゃく</rt></ruby>" }
     ]
+  },
+  {
+    "id": "tpl_09",
+    "isla": "Compras y Tax-Free",
+    "formula": "[ COSA / VERBO ] + てもいいですか",
+    "explicacion": "La forma gramatical más versátil para pedir permiso: ¿Puedo hacer [X]?. Imprescindible para probar ropa, hacer fotos o tocar artículos.",
+    "es_pattern": "¿Puedo {slot}?",
+    "ja_pattern": "{slot}てもいいですか",
+    "romaji_pattern": "{slot} te mo ii desu ka",
+    "slots": [
+      { "categoria": "Compras", "es": "probarme esto", "ja": "これを試着し", "romaji": "kore o shichakushi", "furigana": "これを<ruby>試着<rt>しちゃく</rt></ruby>し" },
+      { "categoria": "Compras", "es": "tocar esto", "ja": "これを触っ", "romaji": "kore o sawat", "furigana": "これを<ruby>触<rt>さわ</rt></ruby>っ" },
+      { "categoria": "Turismo", "es": "hacer fotos", "ja": "写真を撮っ", "romaji": "shashin o tot", "furigana": "<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>っ" },
+      { "categoria": "Turismo", "es": "entrar aquí", "ja": "ここに入っ", "romaji": "koko ni hait", "furigana": "ここに<ruby>入<rt>はい</rt></ruby>っ" },
+      { "categoria": "Onsen", "es": "entrar con bañador", "ja": "水着で入っ", "romaji": "mizugi de hait", "furigana": "<ruby>水着<rt>みずぎ</rt></ruby>で<ruby>入<rt>はい</rt></ruby>っ" }
+    ]
+  },
+  {
+    "id": "tpl_10",
+    "isla": "Socialización y Amistad",
+    "formula": "[ COSA / COMIDA ] + が好きです",
+    "explicacion": "Expresa preferencias directas. 'Ga' marca el objeto de tu gusto. Es la fórmula más inmediata para conectar con nativos en bares o cafeterías.",
+    "es_pattern": "Me gusta {slot}.",
+    "ja_pattern": "{slot}が好きです",
+    "romaji_pattern": "{slot} ga suki desu",
+    "slots": [
+      { "categoria": "Comida", "es": "el sushi", "ja": "寿司", "romaji": "sushi", "furigana": "<ruby>寿司<rt>すし</rt></ruby>" },
+      { "categoria": "Comida", "es": "la comida picante", "ja": "辛い料理", "romaji": "karai ryouri", "furigana": "<ruby>辛<rt>から</rt></ruby>い<ruby>料理<rt>りょうり</rt></ruby>" },
+      { "categoria": "Cultura", "es": "el anime", "ja": "アニメ", "romaji": "anime", "furigana": "アニメ" },
+      { "categoria": "Cultura", "es": "la historia japonesa", "ja": "日本の歴史", "romaji": "nihon no rekishi", "furigana": "<ruby>日本<rt>にほん</rt></ruby>の<ruby>歴史<rt>れきし</rt></ruby>" },
+      { "categoria": "Lugares", "es": "la ciudad de Kioto", "ja": "京都の街", "romaji": "Kyouto no machi", "furigana": "<ruby>京都<rt>きょうと</rt></ruby>の<ruby>街<rt>まち</rt></ruby>" }
+    ]
+  },
+  {
+    "id": "tpl_11",
+    "isla": "Farmacia y Malestares",
+    "formula": "[ PARTE DEL CUERPO ] + が痛いです",
+    "explicacion": "Indica dolor físico localizado. 'Itai desu' significa 'duele'. Es la fórmula más inmediata para comunicar molestias en clínicas o farmacias.",
+    "es_pattern": "Me duele {slot}.",
+    "ja_pattern": "{slot}が痛いです",
+    "romaji_pattern": "{slot} ga itai desu",
+    "slots": [
+      { "categoria": "Cuerpo", "es": "la cabeza", "ja": "頭", "romaji": "atama", "furigana": "<ruby>頭<rt>あたま</rt></ruby>" },
+      { "categoria": "Cuerpo", "es": "el estómago", "ja": "お腹", "romaji": "onaka", "furigana": "お<ruby>腹<rt>なか</rt></ruby>" },
+      { "categoria": "Cuerpo", "es": "la garganta", "ja": "喉", "romaji": "nodo", "furigana": "<ruby>喉<rt>のど</rt></ruby>" },
+      { "categoria": "Cuerpo", "es": "la muela / un diente", "ja": "歯", "romaji": "ha", "furigana": "<ruby>歯<rt>は</rt></ruby>" },
+      { "categoria": "Cuerpo", "es": "la espalda", "ja": "背中", "romaji": "senaka", "furigana": "<ruby>背中<rt>せなか</rt></ruby>" }
+    ]
+  },
+  {
+    "id": "tpl_12",
+    "isla": "Shinkansen y Trenes",
+    "formula": "[ TIPO DE ASIENTO / TICKET ] + を一枚お願いします",
+    "explicacion": "Estructura estándar para taquillas de transporte. 'Ichimai' es el contador plano obligatorio para billetes y pases.",
+    "es_pattern": "Un {slot}, por favor.",
+    "ja_pattern": "{slot}を一枚お願いします",
+    "romaji_pattern": "{slot} o ichimai onegaishimasu",
+    "slots": [
+      { "categoria": "Billetes", "es": "asiento reservado", "ja": "指定席", "romaji": "shiteiseki", "furigana": "<ruby>指定席<rt>していせき</rt></ruby>" },
+      { "categoria": "Billetes", "es": "asiento no reservado", "ja": "自由席", "romaji": "jiyuuseki", "furigana": "<ruby>自由席<rt>じゆうせき</rt></ruby>" },
+      { "categoria": "Billetes", "es": "billete de adulto", "ja": "大人", "romaji": "otona", "furigana": "<ruby>大人<rt>おとな</rt></ruby>" },
+      { "categoria": "Billetes", "es": "billete de ida y vuelta", "ja": "往復切符", "romaji": "oufuku kippu", "furigana": "<ruby>往復切符<rt>おうふくきっぷ</rt></ruby>" },
+      { "categoria": "Billetes", "es": "pase de 1 día", "ja": "一日乗車券", "romaji": "ichinichi joushaken", "furigana": "<ruby>一日乗車券<rt>いちにちじょうしゃけん</rt></ruby>" }
+    ]
   }
 ]

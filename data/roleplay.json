@@ -103,5 +103,213 @@
         "feedback": "No es necesario cortar la comunicación si ya has entendido la hora del check-in."
       }
     ]
+  },
+  {
+    "id": "conv_compras_taxfree_001",
+    "category": "Compras y Tax-Free",
+    "subcategory": "Tienda de ropa",
+    "title": "Probándose ropa y solicitando Tax-Free en caja",
+    "difficulty": "N5",
+    "audioUrl": "media/taxfree1.mp3",
+    "dialogue": [
+      {
+        "speaker": "Cliente",
+        "pitch": 0.9,
+        "text": "すみません、これを試着してもいいですか？",
+        "html": "すみません、これを<ruby>試着<rt>しちゃく</rt></ruby>してもいいですか？",
+        "translation": "Disculpe, ¿puedo probarme esto?"
+      },
+      {
+        "speaker": "Dependiente",
+        "pitch": 1.1,
+        "text": "はい、どうぞ。試着室はこちらです。",
+        "html": "はい、どうぞ。<ruby>試着室<rt>しちゃくしつ</rt></ruby>はこちらです。",
+        "translation": "Sí, adelante. Los probadores están por aquí."
+      },
+      {
+        "speaker": "Cliente",
+        "pitch": 0.9,
+        "text": "ありがとうございます。……すみません、ちょっと小さいです。もっと大きいサイズはありますか？",
+        "html": "ありがとうございます。……すみません、ちょっと<ruby>小<rt>ちい</rt></ruby>さいです。もっと<ruby>大<rt>おお</rt></ruby>きいサイズはありますか？",
+        "translation": "Muchas gracias. ……Disculpe, me queda un poco pequeña. ¿Tienen una talla más grande?"
+      },
+      {
+        "speaker": "Dependiente",
+        "pitch": 1.1,
+        "text": "少々お待ちください。……はい、こちらがLサイズになります。",
+        "html": "<ruby>少々<rt>しょうしょう</rt></ruby>お<ruby>待<rt>ま</rt></ruby>ちください。……はい、こちらがLサイズになります。",
+        "translation": "Espere un momento, por favor. ……Aquí tiene, esta es la talla L."
+      },
+      {
+        "speaker": "Cliente",
+        "pitch": 0.9,
+        "text": "ちょうどいいです！これにします。免税はできますか？",
+        "html": "ちょうどいいです！これにします。<ruby>免税<rt>めんぜい</rt></ruby>はできますか？",
+        "translation": "¡Me queda perfecta! Me quedo con esta. ¿Se puede hacer Tax-Free (exención de impuestos)?"
+      },
+      {
+        "speaker": "Dependiente",
+        "pitch": 1.1,
+        "text": "はい、5000円以上でご利用いただけます。パスポートはお持ちですか？",
+        "html": "はい、<ruby>5000円以上<rt>ごせんえんいじょう</rt></ruby>でご<ruby>利用<rt>りよう</rt></ruby>いただけます。パスポートはお<ruby>持<rt>も</rt></ruby>ちですか？",
+        "translation": "Sí, está disponible a partir de 5.000 yenes. ¿Lleva consigo el pasaporte?"
+      },
+      {
+        "speaker": "Cliente",
+        "pitch": 0.9,
+        "text": "はい、こちらです。",
+        "html": "はい、こちらです。",
+        "translation": "Sí, aquí tiene."
+      },
+      {
+        "speaker": "Dependiente",
+        "pitch": 1.1,
+        "text": "パスポートをお預かりします。カードでお支払いですか？",
+        "html": "パスポートをお<ruby>預<rt>あず</rt></ruby>かりします。カードでお<ruby>支払<rt>しはら</rt></ruby>いですか？",
+        "translation": "Me quedo el pasaporte un momento. ¿Paga con tarjeta?"
+      },
+      {
+        "speaker": "Cliente",
+        "pitch": 0.9,
+        "text": "はい、カードでお願いします。",
+        "html": "はい、カードでお<ruby>願<rt>ねが</rt></ruby>いします。",
+        "translation": "Sí, con tarjeta, por favor."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1_taxfree",
+        "question": "¿Por qué pidió el cliente otra talla tras entrar al probador?",
+        "options": [
+          "Porque le quedaba grande",
+          "Porque le quedaba pequeña (ちょっと小さい)",
+          "Porque no le gustaba el color",
+          "Porque estaba rota"
+        ],
+        "correctIndex": 1,
+        "explanation": "El cliente indica claramente: 'ちょっと小さいです。もっと大きいサイズはありますか？' (Me queda pequeña, ¿tienen una talla más grande?)."
+      },
+      {
+        "id": "q2_taxfree",
+        "question": "¿Cuál es el importe mínimo que indica el dependiente para acceder al Tax-Free?",
+        "options": [
+          "A partir de 3.000 yenes",
+          "A partir de 5.000 yenes (5000円以上)",
+          "A partir de 10.000 yenes",
+          "No hay importe mínimo"
+        ],
+        "correctIndex": 1,
+        "explanation": "El dependiente explica: '5000円以上でご利用いただけます' (Está disponible a partir de 5.000 yenes)."
+      },
+      {
+        "id": "q3_taxfree",
+        "question": "¿Qué documento le solicitan en caja para tramitar la compra libre de impuestos?",
+        "options": [
+          "El billete de avión",
+          "El pasaporte (パスポート)",
+          "El carnet de conducir internacional",
+          "La reserva del hotel"
+        ],
+        "correctIndex": 1,
+        "explanation": "Preguntan: 'パスポートはお持ちですか？' (¿Lleva consigo el pasaporte?)."
+      }
+    ]
+  },
+  {
+    "id": "conv_onsen_001",
+    "category": "Onsen y Tradición",
+    "subcategory": "Recepción de baños",
+    "title": "Normativa de entrada, toallas y tatuajes en el Onsen",
+    "difficulty": "N5",
+    "audioUrl": "media/onsen1.mp3",
+    "dialogue": [
+      {
+        "speaker": "Cliente",
+        "pitch": 0.9,
+        "text": "すみません、初めてですが、タトゥーは大丈夫ですか？",
+        "html": "すみません、<ruby>初<rt>はじ</rt></ruby>めてですが、タトゥーは<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですか？",
+        "translation": "Disculpe, es mi primera vez aquí, ¿se permiten tatuajes?"
+      },
+      {
+        "speaker": "Recepcionista",
+        "pitch": 1.1,
+        "text": "シールで隠していただければ、ご入浴いただけますよ。",
+        "html": "シールで<ruby>隠<rt>かく</rt></ruby>していただければ、ご<ruby>入浴<rt>にゅうよく</rt></ruby>いただけますよ。",
+        "translation": "Si se los cubre con parches adhesivos, puede acceder al baño."
+      },
+      {
+        "speaker": "Cliente",
+        "pitch": 0.9,
+        "text": "わかりました。大人二人お願いします。タオルはありますか？",
+        "html": "わかりました。<ruby>大人二人<rt>おとなふたり</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします。タオルはありますか？",
+        "translation": "Entendido. Dos adultos, por favor. ¿Tienen toallas?"
+      },
+      {
+        "speaker": "Recepcionista",
+        "pitch": 1.1,
+        "text": "バスタオルは200円でレンタルできます。",
+        "html": "バスタオルは<ruby>200円<rt>にひゃくえん</rt></ruby>でレンタルできます。",
+        "translation": "Puede alquilar toallas de baño por 200 yenes."
+      },
+      {
+        "speaker": "Cliente",
+        "pitch": 0.9,
+        "text": "二枚お願いします。靴はどこに入れますか？",
+        "html": "<ruby>二枚<rt>にまい</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします。<ruby>靴<rt>くつ</rt></ruby>はどこに<ruby>入<rt>い</rt></ruby>れますか？",
+        "translation": "Deme dos, por favor. ¿Dónde guardo los zapatos?"
+      },
+      {
+        "speaker": "Recepcionista",
+        "pitch": 1.1,
+        "text": "入口の下駄箱に入れて、鍵をお持ちください。お風呂は夜11時までです。",
+        "html": "<ruby>入口<rt>いりぐち</rt></ruby>の<ruby>下駄箱<rt>げたばこ</rt></ruby>に<ruby>入<rt>い</rt></ruby>れて、<ruby>鍵<rt>かぎ</rt></ruby>をお<ruby>持<rt>も</rt></ruby>ちください。お<ruby>風呂<rt>ふろ</rt></ruby>は<ruby>夜11時<rt>よるじゅういちじ</rt></ruby>までです。",
+        "translation": "Colóquelos en el zapatero de la entrada y conserve la llave. El baño está abierto hasta las 11 de la noche."
+      },
+      {
+        "speaker": "Cliente",
+        "pitch": 0.9,
+        "text": "ありがとうございます。ゆっくり入ってきます。",
+        "html": "ありがとうございます。ゆっくり<ruby>入<rt>はい</rt></ruby>ってきます。",
+        "translation": "Muchas gracias. Voy a disfrutar del baño con calma."
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1_onsen",
+        "question": "¿Bajo qué condición puede entrar al baño una persona con tatuajes en este onsen?",
+        "options": [
+          "No se permite la entrada bajo ningún concepto",
+          "Pagando un recargo especial",
+          "Cubriéndolos con pegatinas/parches (シールで隠す)",
+          "Solo en horario nocturno"
+        ],
+        "correctIndex": 2,
+        "explanation": "La recepcionista aclara: 'シールで隠していただければ...' (Si se los cubre con adhesivos/parches, puede entrar)."
+      },
+      {
+        "id": "q2_onsen",
+        "question": "¿Cuánto cuesta el alquiler de la toalla grande (バスタオル)?",
+        "options": [
+          "Es gratis",
+          "100 yenes",
+          "200 yenes (200円)",
+          "500 yenes"
+        ],
+        "correctIndex": 2,
+        "explanation": "La empleada indica: 'バスタオルは200円でレンタルできます' (Se pueden alquilar por 200 yenes)."
+      },
+      {
+        "id": "q3_onsen",
+        "question": "¿Hasta qué hora permanecen abiertas las instalaciones del baño?",
+        "options": [
+          "Hasta las 21:00",
+          "Hasta las 22:00",
+          "Hasta las 23:00 (夜11時まで)",
+          "Abierto las 24 horas"
+        ],
+        "correctIndex": 2,
+        "explanation": "Se especifica en la despedida: 'お風呂は夜11時までです' (El baño es hasta las 11 de la noche)."
+      }
+    ]
   }
 ]
